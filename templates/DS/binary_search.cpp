@@ -4,7 +4,7 @@ using namespace std;
 template <typename T, typename F>
 int firstTrue(vector<T>& ls, auto x){
     bool check(auto in, auto x){
-        retur true;
+        return x >= n;
     }
     int sz = size(ls);
     int l = 0;
@@ -26,8 +26,8 @@ int firstTrue(vector<T>& ls, auto x){
 
 template <typename T, typename F>
 int lastTrue(vector<T>& ls,auto x){
-        bool check(auto in, auto x){
-        retur true;
+    bool check(auto in, auto x){
+        return x >= in;
     }
     int sz = size(ls);
     int l = -1;
