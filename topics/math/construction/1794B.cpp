@@ -1,10 +1,12 @@
 /*
-
-
+Link: https://codeforces.com/contest/1794/problem/B
+Rating: 900
+Duration: X
 */
 
 #include <bits/stdc++.h>
 using namespace std;
+
 
 using ll  = long long;
 using ull = unsigned long long;
@@ -30,6 +32,9 @@ using vvll = vector<vll>;
 #define sz(x)   (int)(x).size()
 #define rep(i, a, b) for (int i = (a); i < (b); i++)
 
+using str = string;
+
+
 // Constants
 const ll INF  = 1e18;
 const int INF32 = 1e9;
@@ -38,37 +43,24 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    int l;
+    ll l;
     cin >> l;
-    map<int,int> factors;
-    int tot = 0;
+    vll v(l);
+    for(auto& x: v){
+        cin >> x;
+    }
+    ll prev = 3;
     rep(i,0,l){
-       int input;
-       cin >> input;
-       int c = 2;
-       while(input > 1){
-        if(input % c == 0){
-            factors[c]++;
-            tot++;
-            if(factors[c] == l){
-                tot -= l;
-                factors[c] = 0;
-            }
-            input /= c;
+        if(v[i] == 1){
+            v[i]++;
         }
-        else{
-            c++;
+        if(v[i] % prev == 0){
+            v[i]++;
         }
-        if(c>1000){
-            c = input;
-        } 
-       } 
+        prev = v[i];
+        cout << v[i] << " ";
     }
-    if(tot == 0){
-        cout << "YES\n";
-    }else{
-        cout << "NO\n";
-    }
+    cout << "\n";
 
 }
 

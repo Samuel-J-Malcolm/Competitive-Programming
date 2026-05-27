@@ -1,5 +1,9 @@
 /*
 
+    Link: https://codeforces.com/contest/1883/problem/C
+
+    Duration: X
+
     Rating: 1000
 */
 

@@ -1,6 +1,7 @@
 /*
-
-
+Link: https://codeforces.com/contest/1909/problem/B
+Rating: 1200
+Duration: X
 */
 
 #include <bits/stdc++.h>

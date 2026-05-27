@@ -1,10 +1,12 @@
 /*
-
-
+Link: https://codeforces.com/contest/1846/problem/E1
+Rating: 1300
+Duration: X
 */
 
 #include <bits/stdc++.h>
 using namespace std;
+
 
 using ll  = long long;
 using ull = unsigned long long;
@@ -30,41 +32,39 @@ using vvll = vector<vll>;
 #define sz(x)   (int)(x).size()
 #define rep(i, a, b) for (int i = (a); i < (b); i++)
 
+using str = string;
+
+
 // Constants
 const ll INF  = 1e18;
 const int INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
-bool sortf(pii a,pii b){
-    if(a.fi != b.fi){
-        return a.fi>b.fi;
-    }
-    if(abs(a.se) != abs(b.se)){
-        return abs(b.se) < abs(a.se);
-    }
-    return a.se > b.se;
-}
-
 void solve()
 {
-    int x,y,l;
+    ll l;
     cin >> l;
-    cin >> x;
-    cin >> y;
-    ll total = 0;
-    map<pii,int> m;
-    int in;
-    rep(i,0,l){
-        cin >> in;
-        int xMod = in % x;
-        int yMod = in % y;
-        total += m[{yMod,(x-xMod) % x}];
-        m[{yMod,xMod}]++;
-    }
-    
-   cout << total << "\n";
+    ll i = 2;
+    while((i+1)*i <= l){
+        if(l % i != 1){
+            i++;
+            continue;
+        }
 
+        ll c = 1 + i + i*i;
+        ll j = 3;
+        while(c < l){
+            c *= i;
+            c += 1;
+        }
+        if(c==l){
+            cout << "YES\n";
+            return;
+        }
+        i++;
+    }
+    cout << "NO\n";
 
 }
 
