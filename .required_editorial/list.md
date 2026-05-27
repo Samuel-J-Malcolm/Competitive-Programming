@@ -7,3 +7,5 @@ https://codeforces.com/contest/2210/problem/C1
 https://codeforces.com/problemset/problem/2218/D
 1200
 https://codeforces.com/problemset/problem/2218/E
+1500
+https://codeforces.com/problemset/problem/1915/F

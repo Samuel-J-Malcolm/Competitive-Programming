@@ -1,6 +1,6 @@
 /*
-
-
+Link: https://codeforces.com/contest/2230/problem/B
+Rating: 898
 */
 
 #include <bits/stdc++.h>
@@ -42,49 +42,42 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    ll l;
-    cin >> l;
-    vll v;
-    set<ll> s;
-    ll dupes = 0;
-    ll input;
-    ll maxi = 0;
-    rep(i,0,l){
-        cin >> input;
-        if(s.count(input)){
-            dupes++;
+    str s;
+    cin >> s;
+    int twos = 0;
+    int fours = 0;
+    int option1 = 0;
+    int option2 = 0;
+    vector<int> v;
+    for(char c: s){
+        if(c == '4'){
+            fours++;
+        }
+        if(c  == '2'){
+            twos++;
+        }
+    }
+    v.push_back(twos+fours);
+    int l = 0;
+    int odds = 0;
+    int mind = twos+fours;
+    for(char c: s){
+        if(c == '4'){
+            continue;
+        }
+        if(c == '2'){
+            v.push_back(v[l]-1);
+            mind = min(v[l+1],mind);
         }
         else{
-            maxi = max(input,maxi);
-            v.push_back(input);
-            s.emplace(input);
+            v.push_back(v[l]+1);
         }
+        l++;
     }
-    ull mex = 0;
-    ll sum = 0;
-    ll s1 = sz(v);
-    sort(all(v));
-    rep(i,0,s1){
-        input = v[i];
-    //    cout << input << " ";
-        if(mex == input){
-            mex++; 
-        }
-        else{
-            break;
-        }
-    }
-    sum += (mex*(mex+1))/2;
-    if(maxi == mex){
-        mex++;
-    }
-    sum += mex * (l-mex);
-    sum += l*maxi;
-    if(mex == 2){
-        sum--;
-    }
-    cout << sum;
-    cout << "\n";
+    cout << mind << "\n";
+   
+    
+
 }
 
 int main()

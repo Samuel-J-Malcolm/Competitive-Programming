@@ -1,35 +1,11 @@
 /*
-Link:
-Rating:
+Link: https://codeforces.com/contest/2224/problem/B
+Rating: 1049
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-#include <ext/pb_ds/assoc_container.hpp>
-#include <ext/pb_ds/tree_policy.hpp>
-
-
-typedef __gnu_pbds::tree<int, __gnu_pbds::null_type, less<int>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update> ordered_set;
-ordered_set st;
-
-
-long long segments(std::vector<std::pair<int,int>>& s){
-    st.clear();
-
-    int n = s.size();
-    sort(s.begin(), s.end());
- 
-    long long ans = 0;
- 
-    for(auto p : s){
-        ans += st.size() - st.order_of_key(p.second);
- 
-        st.insert(p.second);
-    }
- 
-    return ans;
-}
 
 using ll  = long long;
 using ull = unsigned long long;
@@ -64,18 +40,53 @@ const int INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
-
-
 void solve()
 {
-    int l;
+    ll l;
     cin >> l;
-    vector<pii> v(l);
+    priority_queue<int> p;
+    set<int> s;
+    ll maxi = 0;
+    int d = 0;
+    ll in;
     rep(i,0,l){
-        cin >> v[i].se;
-        cin >> v[i].fi;
+        cin >> in;
+        if(s.count(in)){
+            d++;
+        }
+        else{
+            p.emplace(-in);
+            s.insert(in);
+            maxi = max(maxi,in);
+        }
     }
-    cout << segments(v) << "\n";
+    ll total = maxi*l;
+    ll mex = 0;
+    if(maxi == 0){
+        cout << l << "\n";
+        return;
+    }
+    while(sz(p) > 1){
+        if(mex == -p.top()){
+            mex++;
+        }
+        else{
+            d += sz(p) - 1;
+            break;
+        }
+        if(maxi == mex){
+            mex++;
+        }
+        total += mex;
+        p.pop();
+        
+
+ //       cout << mex << "! ";
+
+    }
+    total += mex*d;
+    cout << total << "\n";
+    
 
 }
 
