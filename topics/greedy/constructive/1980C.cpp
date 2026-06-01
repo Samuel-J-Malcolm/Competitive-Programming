@@ -1,7 +1,6 @@
 /*
-Link: $url$
+Link:
 Rating:
-Platform:
 Duration: 
 */
 
@@ -44,8 +43,42 @@ void solve()
 {
     ll l;
     cin >> l;
-    vi v(l);
-   
+    vi o(l);
+    vi n(l);
+    rep(i,0,l){
+        cin >> o[i];
+    }
+    map<ll,ll> req;
+    set<ll> cont;
+    ll sum = 0;
+    rep(i,0,l){
+        cin >> n[i];
+        if(n[i] != o[i]){
+            req[n[i]]++;
+            sum++;
+        }
+        cont.insert(n[i]);
+    }
+    ll l1;
+    cin >> l1;
+    ll in;
+    rep(i,0,l1){
+        cin >> in;
+        if(req[in] > 0){
+            req[in]--;
+            sum--;
+        }
+        if(i == l1-1){
+            if(cont.count(in)){
+                if(sum == 0){
+                    cout << "YES\n";
+                    return;
+                }
+            }
+        }
+    }
+    cout << "NO\n";
+    return;
     
 
 }
@@ -59,6 +92,6 @@ int main()
     cin >> t;
     while (t--)
         solve();
-        cout << "\n";
+
     return 0;
 }

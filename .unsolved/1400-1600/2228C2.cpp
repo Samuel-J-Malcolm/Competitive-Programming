@@ -96,7 +96,7 @@ void solve()
         bounds.se *= 10;
         bounds.se += mind;
     }
-    cout << min(num - bounds.fi, bounds.se - num) << "\n";
+    cout << min(num - bounds.fi, bounds.se - num);
 
 
 
@@ -113,6 +113,6 @@ int main()
     cin >> t;
     while (t--)
         solve();
-
+        cout << "\n";
     return 0;
 }

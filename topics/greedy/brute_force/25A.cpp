@@ -1,8 +1,7 @@
 /*
-Link: $url$
-Rating:
-Platform:
-Duration: 
+Link: https://codeforces.com/problemset/problem/25/A
+Rating: 1300
+Duration: <10m
 */
 
 #include <bits/stdc++.h>
@@ -45,7 +44,29 @@ void solve()
     ll l;
     cin >> l;
     vi v(l);
-   
+    for(auto& x: v){
+        cin >> x;
+    }
+    int parity = v[0] % 2;
+    if(parity != v[1] % 2){
+        if(parity != v[2] % 2){
+            cout << 1;
+        }
+        else{
+            cout << 2;
+        }
+        return;
+    }
+    if(l == 3){
+        cout << 3;
+        return;
+    }
+    rep(i,2,l){
+        if(parity != v[i] % 2){
+            cout << i+1;
+            return;
+        }
+    }
     
 
 }
@@ -56,9 +77,8 @@ int main()
     cin.tie(nullptr);
 
     ll t = 1;
-    cin >> t;
     while (t--)
         solve();
-        cout << "\n";
+
     return 0;
 }
