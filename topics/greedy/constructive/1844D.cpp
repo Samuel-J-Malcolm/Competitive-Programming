@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/problemset/problem/1844/D
 Rating:
 Platform:
 Duration: 
@@ -33,11 +33,6 @@ using vvll = vector<vll>;
 #define rep(i, a, b) for (ll i = (a); i < (b); i++)
 using str = string;
 
-#define print(a) cout << a;
-#define println(a) cout << a << "\n";
-#define NO print("NO"); return;
-#define YES print("YES"); return;
-
 
 // Constants
 const ll INF  = 1e18;
@@ -49,7 +44,18 @@ void solve()
 {
     ll l;
     cin >> l;
-    vi v(l);
+    str s = "qwertyuiopasdfghjklzxcvbnm";
+    rep(i,2,26){
+        if(l % i != 0){
+            str s = "qwertyuiopasdfghjklzxcvbnm";
+            str sub = s.substr(0,i);
+            rep(j,0,l/i){
+                cout << sub;
+            }
+            cout << s.substr(0,l%i);
+            return;
+        }
+    }
    
     
 

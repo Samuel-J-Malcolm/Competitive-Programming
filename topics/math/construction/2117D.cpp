@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/problemset/problem/2117/D
 Rating:
 Platform:
 Duration: 
@@ -38,19 +38,59 @@ using str = string;
 #define NO print("NO"); return;
 #define YES print("YES"); return;
 
-
 // Constants
 const ll INF  = 1e18;
 const ll INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
+void printstruct(auto& s){
+    cout << "(";
+    for(auto c: s){
+        cout << c << " ";
+    }
+    cout << ")";
+    cout << "\n";
+    
+}
+
+
 void solve()
 {
     ll l;
     cin >> l;
-    vi v(l);
-   
+    vll v(l);
+    ll m = 0;
+    rep(i,0,l){
+        cin >> v[i];
+        m = max(v[i]/(l+1),m);
+    }
+    ll cdiff = v[1]-v[0];
+    if(cdiff>0){
+        rep(i,0,l){
+            v[i] -= (i+1)*cdiff;
+        }
+    }
+    else if(cdiff<0){
+        rep(i,0,l){
+            v[i] += (l-(i+1)+1)*cdiff; // - cdiff * -1
+        }
+    }
+    if(v[0] < 0 || v[0] % (l+1) != 0){
+        NO
+    }
+    rep(i,0,l){
+        if(v[i] != v[0]){
+            NO
+        }
+    }
+    YES
+
+
+
+    
+    
+
     
 
 }

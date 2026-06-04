@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/problemset/problem/2208/C
 Rating:
 Platform:
 Duration: 
@@ -33,11 +33,6 @@ using vvll = vector<vll>;
 #define rep(i, a, b) for (ll i = (a); i < (b); i++)
 using str = string;
 
-#define print(a) cout << a;
-#define println(a) cout << a << "\n";
-#define NO print("NO"); return;
-#define YES print("YES"); return;
-
 
 // Constants
 const ll INF  = 1e18;
@@ -49,7 +44,20 @@ void solve()
 {
     ll l;
     cin >> l;
-    vi v(l);
+    vector<pair<double,double>> values(l);
+    rep(i,1,l+1){
+        cin >> values[l-i].fi;
+        cin >> values[l-i].se;
+        values[l-i].se = 1-(values[l-i].se/100);
+    }
+    rep(i,1,l+1){
+    }
+    vector<double> maxvals(l+1);
+    maxvals[0] = 0; 
+    rep(i,0,l){
+        maxvals[i+1] = max(maxvals[i],maxvals[i]*values[i].se+values[i].fi);
+    }
+    cout << fixed << setprecision(10) << maxvals[l];
    
     
 

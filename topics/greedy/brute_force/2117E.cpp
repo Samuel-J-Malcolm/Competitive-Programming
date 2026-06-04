@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2117/problem/E
 Rating:
 Platform:
 Duration: 
@@ -38,6 +38,16 @@ using str = string;
 #define NO print("NO"); return;
 #define YES print("YES"); return;
 
+void printstruct(auto& s){
+    cout << "(";
+    for(ll c: s){
+        cout << c << " ";
+    }
+    cout << ")";
+    cout << "\n";
+    
+}
+
 
 // Constants
 const ll INF  = 1e18;
@@ -49,8 +59,42 @@ void solve()
 {
     ll l;
     cin >> l;
-    vi v(l);
-   
+    vi a(l);
+    vi b(l);
+    rep(i,0,l){
+        cin >> a[i];
+    }
+    rep(i,0,l){
+        cin >> b[i];
+    }
+    set<ll> s;
+    for(int i = l-1;i>=0;i--){
+        if(a[i] == b[i]){
+            cout << i+1;
+            return;
+        }
+        else if(s.count(a[i]) == 1|| s.count(b[i]) == 1){
+            cout << i+1;
+            return;
+        }
+        if(i == l-1){
+            continue;
+        }
+        
+        s.emplace(a[i+1]);
+        s.emplace(b[i+1]);
+        if(a[i] == a[i+1] || b[i] == b[i+1]){
+            cout << i+1;
+            return;
+        }
+        
+        
+        
+    }
+    cout  << 0;
+    return;
+
+    
     
 
 }

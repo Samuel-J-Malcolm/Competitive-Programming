@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/problemset/problem/2202/B
 Rating:
 Platform:
 Duration: 
@@ -33,11 +33,6 @@ using vvll = vector<vll>;
 #define rep(i, a, b) for (ll i = (a); i < (b); i++)
 using str = string;
 
-#define print(a) cout << a;
-#define println(a) cout << a << "\n";
-#define NO print("NO"); return;
-#define YES print("YES"); return;
-
 
 // Constants
 const ll INF  = 1e18;
@@ -49,7 +44,35 @@ void solve()
 {
     ll l;
     cin >> l;
-    vi v(l);
+    str s;
+    cin >> s;
+    pii margin = {l % 2,l % 2};
+    for(char c: s){
+        if(c == 'a'){
+            margin.fi--;
+            margin.se--;
+        }
+        if(c == 'b'){
+            margin.fi++;
+            margin.se++;
+        }
+        if(c == '?'){
+            margin.fi--;
+            margin.se++;
+        }
+        if(margin.fi < -1){
+            margin.fi += 2;
+        }
+        if(margin.se > 1){
+            margin.se -= 2;
+        }
+        //cout << "( " << margin.fi << " , " << margin.se << ") ";
+        if(margin.fi > 1 || margin.se < -1){
+            cout << "NO";
+            return;
+        }
+    } 
+    cout << "YES";
    
     
 
