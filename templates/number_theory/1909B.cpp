@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/1909/problem/B
 Rating:
 Platform:
 Duration: 
@@ -50,14 +50,30 @@ const ll INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
-void solve()
-{
-    ll l;
-    cin >> l;
-    vll v(l);
-    rep(i,0,l){
-        //cin >> v[l];
+void solve(){
+    ll n;
+    cin >> n;
+    vector<ll> v(n);
+    ll g = 1;
+    rep(i,0,n){
+        cin >> v[i];
+        if(i == 0){
+            g = v[i];
+        }
+        g = gcd(v[i],g);
     }
+    while(true){
+        g *= 2;
+        rep(i,1,n){
+            if(v[i] % g != v[i-1] % g){
+                cout << g;
+                return;
+            }
+        }
+
+    }
+
+   
     
 
 }

@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2236/problem/B
 Rating:
 Platform:
 Duration: 
@@ -13,13 +13,12 @@ using ll  = long long;
 using ull = unsigned long long;
 using ld  = long double;
 
-using pintint = pair<int, int>;
-using pintl = pair<int, ll>;
+using pii = pair<ll, ll>;
 using pll = pair<ll, ll>;
 
-using vint  = vector<int>;
+using vi  = vector<ll>;
 using vll = vector<ll>;
-using vvint = vector<vint>;
+using vvi = vector<vi>;
 using vvll = vector<vll>;
 
 // Macros
@@ -34,14 +33,10 @@ using vvll = vector<vll>;
 #define rep(i, a, b) for (ll i = (a); i < (b); i++)
 using str = string;
 
+#define print(a) cout << a;
+#define println(a) cout << a << "\n";
 #define NO print("NO"); return;
 #define YES print("YES"); return;
-
-#ifdef LOCAL
-#define dbg(x) cerr << #x << " = " << x << "\n"
-#else
-#define dbg(x)
-#endif
 
 
 // Constants
@@ -54,10 +49,22 @@ void solve()
 {
     ll l;
     cin >> l;
-    vll v(l);
+    ll n;
+    cin >> n;
+    str s;
+    cin >> s;
+    vi v(n);
     rep(i,0,l){
-        //cin >> v[l];
+        v[i % n] = v[i % n] ^ (s[i]-'0');
     }
+    for(ll x: v){
+        if(x != 0){
+            NO
+        }
+    }
+    YES
+
+    
     
 
 }

@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/practice/course/logical-problems/DIFF800/problems/WATERCOOLER2
 Rating:
 Platform:
 Duration: 
@@ -52,12 +52,17 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    ll l;
-    cin >> l;
-    vll v(l);
-    rep(i,0,l){
-        //cin >> v[l];
+    ll x;
+    ll y;
+    cin >> x;
+    cin >> y;
+
+    ll m = y / x;
+    if(y % x == 0){
+        cout << m-1;
+        return;
     }
+    cout << m;
     
 
 }

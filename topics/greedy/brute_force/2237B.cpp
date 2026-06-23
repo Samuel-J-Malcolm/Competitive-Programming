@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2237/problem/B
 Rating:
 Platform:
 Duration: 
@@ -43,6 +43,16 @@ using str = string;
 #define dbg(x)
 #endif
 
+void printstruct(auto& s){
+    cout << "(";
+    for(auto c: s){
+        cout << c << " ";
+    }
+    cout << ")";
+    cout << "\n";
+    
+}
+
 
 // Constants
 const ll INF  = 1e18;
@@ -54,10 +64,36 @@ void solve()
 {
     ll l;
     cin >> l;
-    vll v(l);
+    vll a(l);
+    vll b(l);
+    ll tot = 0;
     rep(i,0,l){
-        //cin >> v[l];
+        cin >> a[i];
     }
+    rep(i,0,l){
+        cin >> b[i];
+    }
+    rep(i,0,sz(a)){
+        //cout << i << " " << tot<< "\n";
+       // printstruct(a);
+      //  printstruct(b);
+        if(a[i] > b[i]){
+            auto idx = lower_bound(b.begin(),b.end(),a[i]);
+            if(idx == b.end()){
+                cout << -1;
+                return;
+            }
+            int d = distance(b.begin(), idx) - i;
+      //      cout << d << "\n";
+            a.erase(a.begin()+i);
+            b.erase(idx);
+            i--;
+            tot += d; 
+        }
+    }
+    cout << tot;
+
+   
     
 
 }

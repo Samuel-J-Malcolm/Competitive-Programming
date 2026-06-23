@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2237/problem/C
 Rating:
 Platform:
 Duration: 
@@ -56,8 +56,18 @@ void solve()
     cin >> l;
     vll v(l);
     rep(i,0,l){
-        //cin >> v[l];
+        cin >> v[i];
     }
+    int curSorted = 0;
+    rep(i,0,l-1){
+        if(v[i] > v[i+1]){
+            v[i+1] += v[i];
+            v[i] = v[i+1]-v[i];
+            i=i-1;
+        }
+    }
+    cout << v[l-1];
+   
     
 
 }

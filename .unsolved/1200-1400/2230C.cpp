@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2230/problem/C
 Rating:
 Platform:
 Duration: 
@@ -55,8 +55,31 @@ void solve()
     ll l;
     cin >> l;
     vll v(l);
+    ll total = 0;
+    ll onesPossible = 0;
+    ll ones = 0;
     rep(i,0,l){
-        //cin >> v[l];
+        cin >> v[i];
+        if(v[i] == 1LL){
+            ones++;
+        }
+        else{
+            total += v[i];
+            onesPossible += (v[i]/2)-1;
+        }
+    }
+    ll maxS = total + min(onesPossible,ones);
+    if(total+ones < 3){
+        cout << 0;
+        return;
+    }
+    if(ones == l-1 && l > 1){
+        cout << total + min(onesPossible + 1, ones);
+;
+        return;
+    }
+    else{
+        cout<< maxS;
     }
     
 

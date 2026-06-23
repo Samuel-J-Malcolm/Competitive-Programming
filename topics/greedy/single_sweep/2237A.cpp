@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2237/problem/A
 Rating:
 Platform:
 Duration: 
@@ -54,10 +54,21 @@ void solve()
 {
     ll l;
     cin >> l;
-    vll v(l);
+    ll h = 0;
+    ll c;    
+    ll in;
     rep(i,0,l){
-        //cin >> v[l];
+        cin >> in;
+        if(i == 0){
+            c = in;
+        }
+        else{
+            c = min(in,c);
+        }
+        h += c;
     }
+    cout << h;
+
     
 
 }

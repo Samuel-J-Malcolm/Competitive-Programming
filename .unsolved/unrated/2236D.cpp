@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2236/problem/D
 Rating:
 Platform:
 Duration: 
@@ -13,13 +13,12 @@ using ll  = long long;
 using ull = unsigned long long;
 using ld  = long double;
 
-using pintint = pair<int, int>;
-using pintl = pair<int, ll>;
+using pii = pair<ll, ll>;
 using pll = pair<ll, ll>;
 
-using vint  = vector<int>;
+using vi  = vector<ll>;
 using vll = vector<ll>;
-using vvint = vector<vint>;
+using vvi = vector<vi>;
 using vvll = vector<vll>;
 
 // Macros
@@ -34,14 +33,10 @@ using vvll = vector<vll>;
 #define rep(i, a, b) for (ll i = (a); i < (b); i++)
 using str = string;
 
+#define print(a) cout << a;
+#define println(a) cout << a << "\n";
 #define NO print("NO"); return;
 #define YES print("YES"); return;
-
-#ifdef LOCAL
-#define dbg(x) cerr << #x << " = " << x << "\n"
-#else
-#define dbg(x)
-#endif
 
 
 // Constants
@@ -50,14 +45,24 @@ const ll INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
+//def sim_game(ll first_move, ll s1, ll s2 vi arr){
+
+//}
+
 void solve()
 {
     ll l;
     cin >> l;
-    vll v(l);
+    ll k;
+    cin >> k;
+    vi v(l);
     rep(i,0,l){
-        //cin >> v[l];
+        cin >> v[i];
     }
+   // if(){
+
+ //   }
+    
     
 
 }

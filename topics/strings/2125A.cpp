@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/problemset/problem/2125/A
 Rating:
 Platform:
 Duration: 
@@ -52,12 +52,18 @@ const ll  MOD = 1e9 + 7;
 
 void solve()
 {
-    ll l;
-    cin >> l;
-    vll v(l);
-    rep(i,0,l){
-        //cin >> v[l];
+    str s;
+    cin >> s;
+    str s1;
+    for(char c: s){
+        if(c == 'T'){
+            cout << c;
+        }
+        else{
+            s1.push_back(c);
+        }
     }
+    cout << s1;
     
 
 }
