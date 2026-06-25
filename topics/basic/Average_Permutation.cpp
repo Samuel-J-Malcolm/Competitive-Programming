@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/practice/course/2-star-difficulty-problems/DIFF1500/problems/AVGPERM
 Rating:
 Platform:
 Duration: 
@@ -69,14 +69,20 @@ void printstruct(auto& s){
 
 void solve()
 {
-    ll m,n,k,x;
-    bool b;
-    str s;
+    ll n;
     cin >> n;
     vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
+    if(n != 3){
+        cout  << n << " " << n-2 << " ";
+        rep(i,1,n-3){
+            cout << i << " ";
+        }
+        cout  << n-3 << " " << n-1;
     }
+    else{
+        cout << "3 2 1";
+    }
+
     
 
 }

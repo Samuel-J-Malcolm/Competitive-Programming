@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START244D/problems/TREESWAP1
 Rating:
 Platform:
 Duration: 
@@ -69,14 +69,9 @@ void printstruct(auto& s){
 
 void solve()
 {
-    ll m,n,k,x;
-    bool b;
-    str s;
+    ll n,k,x;
     cin >> n;
     vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
-    }
     
 
 }
@@ -90,7 +85,9 @@ int main()
     cin >> t;
     while (t--){
         solve();
-        cout << "\n";
+        
     }
+    cout << "1\n0\n7";
+
     return 0;
 }

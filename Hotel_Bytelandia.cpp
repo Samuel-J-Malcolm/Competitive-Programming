@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/practice/course/2-star-difficulty-problems/DIFF1500/problems/HOTEL
 Rating:
 Platform:
 Duration: 
@@ -73,10 +73,28 @@ void solve()
     bool b;
     str s;
     cin >> n;
-    vll v(n);
+    vector<pll> v(n*2);
     rep(i,0,n){
-        //cin >> v[i];
+        cin >> m;
+        v[i] = {m,1};
     }
+    rep(i,0,n){
+        cin >> m;
+        v[i+n] = {m,-1};
+    }
+    sort(all(v));
+    ll maxi = 0;
+    ll cur = 1;
+    rep(i,1,n*2){
+        if(v[i].first != v[i-1].first){
+            maxi = max(maxi,cur);
+            cur += v[i].second;
+        }
+        else{
+            cur += v[i].second;
+        }
+    }
+    cout << maxi;
     
 
 }

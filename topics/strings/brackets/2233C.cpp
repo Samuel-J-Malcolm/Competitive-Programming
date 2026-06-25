@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2233/problem/C
 Rating:
 Platform:
 Duration: 
@@ -69,17 +69,48 @@ void printstruct(auto& s){
 
 void solve()
 {
-    ll m,n,k,x;
-    bool b;
-    str s;
-    cin >> n;
-    vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
-    }
-    
-
+int n, k;
+	cin >> n >> k;
+	string s;
+	cin >> s;
+ 
+	vector<int> pref_open(n + 1);
+	vector<int> pref_close(n + 1);
+ 
+	for (int i = 0; i < n; i++){
+		pref_open[i + 1] = pref_open[i] + (s[i] == '(');
+		pref_close[i + 1] = pref_close[i] + (s[i] == ')');
+	}
+ 
+	int total_close = pref_close[n];
+ 
+	int pos = n;
+	for (int i = 0; i < n; i++){
+		if (pref_open[i] + total_close - pref_close[i] <
+			pref_open[pos] + total_close - pref_close[pos]){
+				pos = i;
+		}
+	}
+ 
+	string ans(n, '0');
+	for (int i = 0; i < pos; i++){
+		if (k > 0 && s[i] == '('){
+			ans[i] = '1';
+			k--;
+		}
+	}
+	for (int i = pos; i < n; i++){
+		if (k > 0 && s[i] == ')'){
+			ans[i] = '1';
+			k--;
+		}
+	}
+ 
+	cout << ans;
 }
+
+// 1
+// 0
 
 int main()
 {

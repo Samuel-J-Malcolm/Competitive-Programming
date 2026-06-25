@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START244D/problems/CARRCOL
 Rating:
 Platform:
 Duration: 
@@ -69,14 +69,25 @@ void printstruct(auto& s){
 
 void solve()
 {
-    ll m,n,k,x;
-    bool b;
-    str s;
+    ll n,l,r;
     cin >> n;
+    cin >> l;
+    cin >> r;
+
     vll v(n);
     rep(i,0,n){
-        //cin >> v[i];
+        cin >> v[i];
     }
+    ll left = 0;
+    rep(i,0,l-1){
+        left += v[i];
+    }
+    ll right = 0;
+    rep(i,r,n){
+        right += v[i];
+    }
+    cout << max(left,right);
+
     
 
 }

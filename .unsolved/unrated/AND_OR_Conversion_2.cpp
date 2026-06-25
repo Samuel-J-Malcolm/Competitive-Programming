@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START244D/problems/ANDOR2
 Rating:
 Platform:
 Duration: 
@@ -69,14 +69,18 @@ void printstruct(auto& s){
 
 void solve()
 {
-    ll m,n,k,x;
-    bool b;
-    str s;
+    ll n,k,x;
     cin >> n;
-    vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
+    str s;
+    cin >>s;
+    k = 2;
+    rep(i,1,n){
+        if(s[i] != s[i-1]){
+            k *= 2;
+            k %= 998244353;
+        }
     }
+    cout << ((k + 998244353) - 1) % 998244353;
     
 
 }

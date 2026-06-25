@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START244D/problems/TELHOME
 Rating:
 Platform:
 Duration: 
@@ -69,14 +69,11 @@ void printstruct(auto& s){
 
 void solve()
 {
-    ll m,n,k,x;
-    bool b;
-    str s;
+    ll n;
     cin >> n;
-    vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
-    }
+    ll d;
+    cin >> d;
+    cout << max(n-d,0LL);
     
 
 }
@@ -87,7 +84,6 @@ int main()
     cin.tie(nullptr);
 
     ll t = 1;
-    cin >> t;
     while (t--){
         solve();
         cout << "\n";

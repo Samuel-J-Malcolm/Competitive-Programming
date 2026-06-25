@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START244D/problems/PASSCHAIN
 Rating:
 Platform:
 Duration: 
@@ -69,14 +69,11 @@ void printstruct(auto& s){
 
 void solve()
 {
-    ll m,n,k,x;
-    bool b;
-    str s;
+    ll n,k;
     cin >> n;
-    vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
-    }
+    cin >> k;
+    n--;
+    cout << 1 + (n / k) * k;
     
 
 }

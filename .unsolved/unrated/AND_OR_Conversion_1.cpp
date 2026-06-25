@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START244D/problems/ANDOR1
 Rating:
 Platform:
 Duration: 
@@ -39,9 +39,9 @@ using vvll = vector<vll>;
 #define sz(x)   (ll)(x).size()
 #define rep(i, a, b) for (ll i = (a); i < (b); i++)
 using str = string;
-
-#define NO print("NO"); return;
-#define YES print("YES"); return;
+#define printr(x) cout << x; return;
+#define NO printr("No");
+#define YES printr("Yes");
 
 #ifdef LOCAL
 #define dbg(x) cerr << #x << " = " << x << "\n"
@@ -69,13 +69,42 @@ void printstruct(auto& s){
 
 void solve()
 {
-    ll m,n,k,x;
-    bool b;
-    str s;
+    ll n;
     cin >> n;
+    str a;
+    str b;
+    cin >> a;
+    cin >> b;
     vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
+    if(n == 2){
+        if(a[1] == b[1] || a[0] == b[0]){
+            YES;
+        }
+        else{
+            NO;
+        }
+    }
+    else{
+        ll inva = 0;
+        ll invb = 0;
+        bool works = a[0] == b[0];
+        rep(i,1,n){
+            if(a[i] != a[i-1]){
+                inva++;
+            }
+            if(b[i] != b[i-1]){
+                invb++;
+            }
+            if(a[i] == b[i]){
+                works=true;
+            }
+        }
+        if((a == b || inva >= invb) && works){
+            YES
+        }
+        else{
+            NO
+        }
     }
     
 

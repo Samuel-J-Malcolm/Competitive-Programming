@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START244D/problems/DIV2
 Rating:
 Platform:
 Duration: 
@@ -69,13 +69,33 @@ void printstruct(auto& s){
 
 void solve()
 {
-    ll m,n,k,x;
-    bool b;
-    str s;
+    ll n,k,x;
     cin >> n;
     vll v(n);
     rep(i,0,n){
-        //cin >> v[i];
+        cin >> v[i];
+    }
+    ll ops = 0;
+    bool eq = true;
+    while(v[0] >= 0){
+        eq = true;
+        rep(i,1,n){
+            while(v[i] > v[0]){
+                v[i] /= 2;
+                ops++;
+            }
+            if(v[i] != v[0]){
+                eq = false;
+            }
+        }
+        if(eq){
+            cout << ops;
+            return;
+        }
+        else{
+            v[0] /= 2;
+            ops++;
+        }
     }
     
 
