@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2241/problem/A
 Rating:
 Platform:
 Duration: 
@@ -10,7 +10,7 @@ using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <bits/stdc++.h>
-#include <iomanip>
+
 
 typedef __gnu_pbds::tree<int, __gnu_pbds::null_type, std::less<int>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update> ordered_set;
 
@@ -72,14 +72,14 @@ void printstruct(auto& s){
 
 void solve()
 {
-    ll m,n,k,x;
-    bool b;
-    str s;
-    cin >> n;
-    vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
+    ll x;
+    ll y;
+    cin >> x;
+    cin >> y;
+    if(x%y == 0){
+        YES
     }
+    NO
     
 
 }

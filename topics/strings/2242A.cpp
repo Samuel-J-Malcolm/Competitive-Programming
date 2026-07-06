@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2242/problem/A
 Rating:
 Platform:
 Duration: 
@@ -77,9 +77,22 @@ void solve()
     str s;
     cin >> n;
     vll v(n);
+    x = 0;
     rep(i,0,n){
-        //cin >> v[i];
+        cin >> v[i];
     }
+    rep(i,0,n){
+        if(v[i] >= 3){
+            YES;
+        }
+        if(v[i] == 2){
+            x++;
+        }
+    }
+    if(x >= 2){
+        YES;
+    }
+    NO;
     
 
 }

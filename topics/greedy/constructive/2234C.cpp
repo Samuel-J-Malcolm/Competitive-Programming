@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2234/problem/C
 Rating:
 Platform:
 Duration: 
@@ -10,7 +10,7 @@ using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <bits/stdc++.h>
-#include <iomanip>
+
 
 typedef __gnu_pbds::tree<int, __gnu_pbds::null_type, std::less<int>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update> ordered_set;
 
@@ -39,12 +39,12 @@ using vvll = vector<vll>;
 #define sz(x)   (ll)(x).size()
 #define rep(i, a, b) for (ll i = (a); i < (b); i++)
 #define repp(i, a, b, c) for (ll i = (a); i < (b); i+=c)
-#define repn(i, a, b, c) for (ll i = (a); i > (b); i-=c)
+#define repn(i, a, b, c) for (ll i = (a); i >= (b); i-=c)
 
 using str = string;
 
-#define NO cout << ("NO"); return;
-#define YES cout << ("YES"); return;
+#define NO print("NO"); return;
+#define YES print("YES"); return;
 
 #ifdef LOCAL
 #define dbg(x) cerr << #x << " = " << x << "\n"
@@ -70,6 +70,10 @@ void printstruct(auto& s){
 }
 
 
+//1 2 3 4
+// 0 2 3 1
+// 2 0 3 2
+
 void solve()
 {
     ll m,n,k,x;
@@ -78,8 +82,29 @@ void solve()
     cin >> n;
     vll v(n);
     rep(i,0,n){
-        //cin >> v[i];
+        cin >> v[i];
     }
+    vll maxes(n);
+    vll mins(n);
+    rep(i,0,n){
+        maxes[i] = 0;
+        mins[i] = 0;
+        rep(j,i,i+n-1){
+            maxes[(j+1) % n] = max(maxes[(j) % n],v[j % n]);
+        }
+        repn(j,i+n-1,i+1,1){
+            mins[j % n] = max(mins[(j+1) % n],v[j % n]);
+        }
+        ll total = 0;
+        rep(i,0,n){
+            total += min(maxes[i],mins[i]);
+        }
+        //printstruct(v);
+        //printstruct(maxes);
+        //printstruct(mins);
+        cout << total << " ";
+    }
+    
     
 
 }

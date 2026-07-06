@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2242/problem/C
 Rating:
 Platform:
 Duration: 
@@ -76,10 +76,47 @@ void solve()
     bool b;
     str s;
     cin >> n;
-    vll v(n);
+    cin >> k;
+    vll v;
+    ll l = 0;
+    ll prev = -1;
     rep(i,0,n){
-        //cin >> v[i];
+        cin >> x;
+        if(x != prev && i != 0){
+            v.push_back(l);
+            l = 0;
+        }
+        l++;
+
+        prev = x;
     }
+    if(l != 0){
+        v.push_back(l);
+    }
+    
+
+    sort(all(v));
+    ll idx = 0;
+    ll sum = n; // total deleted
+    ll nArrays = 0;
+    //printstruct(v);
+    ll prevIdx = -1;
+    rep(i,0,v[sz(v)-1]){
+       // cout << sum << "," << idx << " ";
+
+        
+        while(idx < sz(v) && v[idx] == i){
+            idx++;
+        }
+        if(k >= sum && (((k-sum) % (sz(v) - idx)) == 0) && prevIdx != idx){
+            //cout << k-sum << "," << (idx) << " ";
+            //cout << i << " ";
+            nArrays++;
+            prevIdx = idx;
+        }
+        sum -= sz(v)-idx;
+    }
+    cout << nArrays;
     
 
 }

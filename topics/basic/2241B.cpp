@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2241/problem/B
 Rating:
 Platform:
 Duration: 
@@ -10,7 +10,7 @@ using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <bits/stdc++.h>
-#include <iomanip>
+
 
 typedef __gnu_pbds::tree<int, __gnu_pbds::null_type, std::less<int>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update> ordered_set;
 
@@ -43,8 +43,8 @@ using vvll = vector<vll>;
 
 using str = string;
 
-#define NO cout << ("NO"); return;
-#define YES cout << ("YES"); return;
+#define NO print("NO"); return;
+#define YES print("YES"); return;
 
 #ifdef LOCAL
 #define dbg(x) cerr << #x << " = " << x << "\n"
@@ -75,11 +75,12 @@ void solve()
     ll m,n,k,x;
     bool b;
     str s;
-    cin >> n;
-    vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
+    cin >> s;
+    cout << '1';
+    rep(i,0,s.size()-1){
+        cout << '0';
     }
+    cout << '1';
     
 
 }

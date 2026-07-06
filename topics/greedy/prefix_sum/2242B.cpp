@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2242/problem/B
 Rating:
 Platform:
 Duration: 
@@ -70,16 +70,48 @@ void printstruct(auto& s){
 }
 
 
-void solve()
-{
-    ll m,n,k,x;
+void solve(){
+    ll m,n,k,x,input;
     bool b;
     str s;
     cin >> n;
-    vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
+    vector<pll> v(n);
+    rep(i,0,n-1){
+        cin >> input;
+        if(input == 1){
+            v[i+1].first = v[i].first+1;
+            v[i+1].second = v[i].second;
+        }
+        else if(input == 2){
+            v[i+1].first = v[i].first;
+            v[i+1].second = v[i].second;
+        }else{
+            v[i+1].first = v[i].first;
+            v[i+1].second = v[i].second+1;
+        }
     }
+    cin >> input;
+    rep(i,1,n-1){
+        i += max(i/2-v[i].first,0LL);
+        if(i >= n-1){
+            break;
+        }
+        if(v[i].first * 2 < i){
+            continue;
+        }
+        rep(j,i+1,n){
+            j += max(v[j].second-v[i].second-(j-i)/2-1,0LL);
+            if(j >= n){
+                break;
+            }
+            if((v[j].second-v[i].second)*2 <= j-i){
+                //cout << (i) << " " << j;
+        
+                YES;
+            }
+        }
+    }
+    NO;
     
 
 }

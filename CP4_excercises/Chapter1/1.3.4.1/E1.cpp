@@ -10,7 +10,6 @@ using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <bits/stdc++.h>
-#include <iomanip>
 
 typedef __gnu_pbds::tree<int, __gnu_pbds::null_type, std::less<int>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update> ordered_set;
 
@@ -76,11 +75,9 @@ void solve()
     bool b;
     str s;
     cin >> n;
-    vll v(n);
-    rep(i,0,n){
-        //cin >> v[i];
-    }
-    
+    double pi = atan(1.0)*4; 
+
+    cout << std::fixed << std::setprecision(n) << pi;
 
 }
 
@@ -90,7 +87,6 @@ int main()
     cin.tie(nullptr);
 
     ll t = 1;
-    cin >> t;
     while (t--){
         solve();
         cout << "\n";

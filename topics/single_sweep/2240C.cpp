@@ -1,16 +1,19 @@
 /*
-Link: https://www.codechef.com/practice/course/2-star-difficulty-problems/DIFF1500/problems/HOTEL
+Link: https://codeforces.com/contest/2240/problem/C
 Rating:
 Platform:
 Duration: 
 */
+
+
+
 
 #include <bits/stdc++.h>
 using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 #include <bits/stdc++.h>
-
+#include <iomanip>
 
 typedef __gnu_pbds::tree<int, __gnu_pbds::null_type, std::less<int>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update> ordered_set;
 
@@ -38,10 +41,13 @@ using vvll = vector<vll>;
 #define rall(x) (x).rbegin(), (x).rend()
 #define sz(x)   (ll)(x).size()
 #define rep(i, a, b) for (ll i = (a); i < (b); i++)
+#define repp(i, a, b, c) for (ll i = (a); i < (b); i+=c)
+#define repn(i, a, b, c) for (ll i = (a); i > (b); i-=c)
+
 using str = string;
 
-#define NO print("NO"); return;
-#define YES print("YES"); return;
+#define NO cout << ("NO"); return;
+#define YES cout << ("YES"); return;
 
 #ifdef LOCAL
 #define dbg(x) cerr << #x << " = " << x << "\n"
@@ -73,28 +79,28 @@ void solve()
     bool b;
     str s;
     cin >> n;
-    vector<pll> v(n*2);
+    vll v(n);
+    ll xorsum = 0;
     rep(i,0,n){
-        cin >> m;
-        v[i] = {m,1};
+        cin >> v[i];
+        xorsum ^= v[i];
     }
+    ll indices = 0;
     rep(i,0,n){
-        cin >> m;
-        v[i+n] = {m,-1};
-    }
-    sort(all(v));
-    ll maxi = 0;
-    ll cur = 1;
-    rep(i,1,n*2){
-        if(v[i].first != v[i-1].first){
-            maxi = max(maxi,cur);
-            cur += v[i].second;
-        }
-        else{
-            cur += v[i].second;
+        if((xorsum ^ v[i]) <= v[i]){
+            indices++;
         }
     }
-    cout << maxi;
+    if(xorsum == 0){
+        indices = 1;
+    }
+    if(n == 1){
+        indices = 0;
+    }
+    if(n == 2){
+        indices = 1;
+    }
+    cout << indices;
     
 
 }
