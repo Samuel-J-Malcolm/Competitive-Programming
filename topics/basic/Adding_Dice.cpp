@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START248D/problems/ADDDICE
 Rating:
 Platform:
 Duration: 
@@ -95,10 +95,10 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    if(9-n > 6){
+        NO;
     }
+    YES;
     
 
 }
@@ -109,7 +109,7 @@ int main()
     cin.tie(nullptr);
 
     ll t = 1;
-    cin >> t;
+    //cin >> t;
     while (t--){
         solve();
         out("\n");

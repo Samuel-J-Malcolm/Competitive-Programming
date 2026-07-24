@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc467/tasks/abc467_d
 Rating:
 Platform:
 Duration: 
@@ -42,7 +42,6 @@ using vvll = vector<vll>;
 #define repn(i, a, b, c) for (ll i = (a); i > (b); i-=c)
 
 using str = string;
-#include <bit> // Required for bit operations
 
 #define NO cout << ("No"); return;
 #define YES cout << ("Yes"); return;
@@ -54,9 +53,6 @@ using str = string;
 #endif
 
 
-int bw(unsigned long long x) {
-    return x == 0 ? 0 : 64 - __builtin_clzll(x);
-}
 
 // Constants
 const ll INF  = 1e18;
@@ -80,26 +76,44 @@ void printstruct(auto& s){
 #define ps(x)
 #endif
 
-template<typename... Args>
-void input(Args&... args) {
-    ((cin >> args), ...);
-}
 
-template<typename... Args>
-void out(const Args&... args) {
-    ((cout << args), ...);
-}
 
-void solve(){
-    ll m,n,k,x,in;
+
+void solve()
+{
+    ll m,n,k,x,input;
+    pll p,q,r,s;
     bool b;
-    str s;
-    input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    cin >> p.fi;
+    cin >> p.se;
+    cin >> q.fi;
+    cin >> q.se;
+    cin >> r.fi;
+    cin >> r.se;
+    cin >> s.fi;
+    cin >> s.se;
+   
+    //py-qy/(px-qx) = (sy-ry)/(sx-rx)
+    //-(px-qx)/(py-qy) = (m1y-m2y)/(m1x-m2x) 
+
+    if(((p.se-q.se)*(s.fi-r.fi)) == ((p.fi-q.fi)*(s.se-r.se))){
+        pll m1 ={p.fi+q.fi,p.se+q.se};
+        m1.fi /= 2;
+        m1.se /= 2;
+        pll m2 ={s.fi+r.fi,s.se+r.se};
+        m2.fi /= 2;
+        m2.se /= 2;
+        if(-(p.fi-q.fi)*(m1.fi-m2.fi) == (p.se-q.se)*(m1.se-m2.se)){
+            YES;
+        }
+        NO;
+    }
+    else{
+
+        YES;
     }
     
+
 
 }
 
@@ -112,7 +126,7 @@ int main()
     cin >> t;
     while (t--){
         solve();
-        out("\n");
+        cout << "\n";
     }
     return 0;
 }

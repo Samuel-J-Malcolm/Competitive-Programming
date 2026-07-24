@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2238/problem/D
 Rating:
 Platform:
 Duration: 
@@ -91,14 +91,26 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
+    int m,n,k,x,in;
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    m = -1;
+    int i = 2;
+    while(i*i <= n){
+        if(n % i == 0){
+            m++;
+        }
+        while(n % i == 0){
+            n /= i;
+            m++;
+        }
+        i++;
     }
+    if(n != 1){
+        m+=2;
+    }
+    cout << m;
     
 
 }

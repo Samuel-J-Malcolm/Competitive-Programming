@@ -42,21 +42,16 @@ using vvll = vector<vll>;
 #define repn(i, a, b, c) for (ll i = (a); i > (b); i-=c)
 
 using str = string;
-#include <bit> // Required for bit operations
 
 #define NO cout << ("No"); return;
 #define YES cout << ("Yes"); return;
 
 #ifdef LOCAL
-#define dbg(x) cout << #x << " = " << x << "\n"
+#define dbg(x) cerr << #x << " = " << x << "\n"
 #else
 #define dbg(x)
 #endif
 
-
-int bw(unsigned long long x) {
-    return x == 0 ? 0 : 64 - __builtin_clzll(x);
-}
 
 // Constants
 const ll INF  = 1e18;
@@ -74,32 +69,33 @@ void printstruct(auto& s){
     
 }
 
-#ifdef LOCAL
-#define ps(x) printstruct(x) << "\n"
-#else
-#define ps(x)
-#endif
 
-template<typename... Args>
-void input(Args&... args) {
-    ((cin >> args), ...);
-}
-
-template<typename... Args>
-void out(const Args&... args) {
-    ((cout << args), ...);
-}
-
-void solve(){
-    ll m,n,k,x,in;
+void solve()
+{
+    ll m,n,k,x,input;
     bool b;
     str s;
-    input(n);
+    cin >> n;
+    cin >> m;
     vll v(n);
+    vll psum(n+1);
     rep(i,0,n){
-        //input(v[i]);
+        cin >> v[i];
+        psum[i+1] =  psum[i]+v[i];
     }
-    
+    vll p(m);
+    rep(i,0,m){
+        cin >> p[i];
+    }
+    sort(all(p));
+    x = 0;
+    ll sum = 0;
+    rep(i,0,m){
+        sum += abs(psum[p[i]] - psum[x]);
+        x = p[i];
+    }
+    sum += psum[n] - psum[x];
+    cout << sum;
 
 }
 
@@ -112,7 +108,7 @@ int main()
     cin >> t;
     while (t--){
         solve();
-        out("\n");
+        cout << "\n";
     }
     return 0;
 }

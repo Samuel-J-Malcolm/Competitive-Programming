@@ -1,15 +1,16 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2245/problem/C
 Rating:
 Platform:
 Duration: 
 */
 
 #include <bits/stdc++.h>
+#include <bit> // Required for bit operations
+
 using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
-#include <bits/stdc++.h>
 #include <iomanip>
 
 typedef __gnu_pbds::tree<int, __gnu_pbds::null_type, std::less<int>, __gnu_pbds::rb_tree_tag, __gnu_pbds::tree_order_statistics_node_update> ordered_set;
@@ -42,7 +43,6 @@ using vvll = vector<vll>;
 #define repn(i, a, b, c) for (ll i = (a); i > (b); i-=c)
 
 using str = string;
-#include <bit> // Required for bit operations
 
 #define NO cout << ("No"); return;
 #define YES cout << ("Yes"); return;
@@ -90,15 +90,63 @@ void out(const Args&... args) {
     ((cout << args), ...);
 }
 
+
+
 void solve(){
-    ll m,n,k,x,in;
+    ull m,n,k,x,in;
     bool b;
     str s;
-    input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    input(n,x);
+    x = x^n;
+    if(n == 1){
+        if(x == 0){
+            out("YES\n0");
+        }
+        else{
+            out("NO");
+        }
+        return;
     }
+
+    if(bw(x) > bw(n-1)){
+        NO;
+    }
+    else if(x == 0){
+        out("YES\n");
+
+        rep(i,1,n){
+            if(i != x){
+                out(i," ");
+            }
+        }
+        out(0);
+
+    }
+
+    else if(x < n){
+        out("YES\n");
+        rep(i,1,n){
+            if(i != x){
+                out(i," ");
+            }
+        }
+        out(0," ",x);
+    }
+    
+    else{
+        out("YES\n");
+
+        n--;
+        x ^= n;
+        rep(i,1,n){
+            if(i != x){
+                out(i," ");
+            }
+        }
+        
+        out(0," ",x," ",n);
+    }
+
     
 
 }

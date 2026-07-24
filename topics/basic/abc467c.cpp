@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc467/tasks/abc467_c
 Rating:
 Platform:
 Duration: 
@@ -42,7 +42,6 @@ using vvll = vector<vll>;
 #define repn(i, a, b, c) for (ll i = (a); i > (b); i-=c)
 
 using str = string;
-#include <bit> // Required for bit operations
 
 #define NO cout << ("No"); return;
 #define YES cout << ("Yes"); return;
@@ -54,9 +53,6 @@ using str = string;
 #endif
 
 
-int bw(unsigned long long x) {
-    return x == 0 ? 0 : 64 - __builtin_clzll(x);
-}
 
 // Constants
 const ll INF  = 1e18;
@@ -80,25 +76,38 @@ void printstruct(auto& s){
 #define ps(x)
 #endif
 
-template<typename... Args>
-void input(Args&... args) {
-    ((cin >> args), ...);
-}
 
-template<typename... Args>
-void out(const Args&... args) {
-    ((cout << args), ...);
-}
 
-void solve(){
-    ll m,n,k,x,in;
+void solve()
+{
+    ll m,n,k,x,input;
     bool b;
     str s;
-    input(n);
+    cin >> n;
+    cin >> m;
     vll v(n);
+    vll v1(n-1);
     rep(i,0,n){
-        //input(v[i]);
+        cin >> v[i];
     }
+    rep(i,0,n-1){
+        cin >> v1[i];
+    }
+    ll tmin = 1e18;
+    ll total = 0;
+    ll extra;
+    rep(i,0,m){
+        total = i;
+        extra = i;
+        rep(j,1,n){
+            extra = (extra+v[j]+v[j-1]+m-v1[j-1]) % m;
+            total += extra;
+            //cout << extra << " ";
+        }
+        //cout <<  total << "\n";
+        tmin = min(total,tmin);
+    }
+    cout<<tmin;
     
 
 }
@@ -109,10 +118,10 @@ int main()
     cin.tie(nullptr);
 
     ll t = 1;
-    cin >> t;
+    //cin >> t;
     while (t--){
         solve();
-        out("\n");
+        cout << "\n";
     }
     return 0;
 }

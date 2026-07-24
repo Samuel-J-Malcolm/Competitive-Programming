@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START248D/problems/PASS
 Rating:
 Platform:
 Duration: 
@@ -44,8 +44,8 @@ using vvll = vector<vll>;
 using str = string;
 #include <bit> // Required for bit operations
 
-#define NO cout << ("No"); return;
-#define YES cout << ("Yes"); return;
+#define NO cout << ("Fail"); return;
+#define YES cout << ("Pass"); return;
 
 #ifdef LOCAL
 #define dbg(x) cout << #x << " = " << x << "\n"
@@ -94,11 +94,23 @@ void solve(){
     ll m,n,k,x,in;
     bool b;
     str s;
-    input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    vll v(5);
+    ll g60 = 0;
+    ll g30 = 0;
+    rep(i,0,5){
+        input(v[i]);
+        if(v[i] >= 60){
+            g60++;
+        }
+        if(v[i] >= 30){
+            g30++;
+        }
     }
+    if(g60 > 1 && g30 > 3){
+        YES;
+    }
+    NO;
+    
     
 
 }

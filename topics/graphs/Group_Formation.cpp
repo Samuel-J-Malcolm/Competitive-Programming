@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/problems/CONN01
 Rating:
 Platform:
 Duration: 
@@ -75,7 +75,7 @@ void printstruct(auto& s){
 }
 
 #ifdef LOCAL
-#define ps(x) printstruct(x) << "\n"
+#define ps(x) printstruct(x); cout << "\n";
 #else
 #define ps(x)
 #endif
@@ -91,14 +91,53 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
+    int m,n,k,x,y,in;
     bool b;
     str s;
-    input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    vint groups;
+    stack<int> q;
+    int v,e;
+    input(v,e);
+    vector<bool> visited(v);
+    vvint adj(v);
+    rep(i,0,e){
+        input(x,y);
+        adj[x-1] .push_back(y-1);
+        adj[y-1].push_back(x-1);
     }
+    rep(i,0,v){
+        if(!visited[i]){
+            groups.push_back({0});
+        }
+        else{
+            continue;
+        }
+        q.push(i);
+        while(sz(q) > 0){
+            int t = q.top();
+            for(int j: adj[t]){
+                if(visited[j]){
+                    continue;
+                }
+                else{
+                    q.push(j);
+                    visited[j] = true;
+                    groups[sz(groups)-1]++;
+                    break;
+                }
+            }
+            if(t == q.top()){
+                q.pop();
+            }
+        }
+    }
+    ll perms = 1;
+    for(int i: groups){
+        perms *=i;
+        perms %= MOD;
+    }
+    out(sz(groups)," ",perms);
+
     
 
 }

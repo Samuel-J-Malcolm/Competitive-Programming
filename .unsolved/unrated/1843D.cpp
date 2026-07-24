@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/problemset/problem/1843/D
 Rating:
 Platform:
 Duration: 
@@ -42,21 +42,16 @@ using vvll = vector<vll>;
 #define repn(i, a, b, c) for (ll i = (a); i > (b); i-=c)
 
 using str = string;
-#include <bit> // Required for bit operations
 
-#define NO cout << ("No"); return;
-#define YES cout << ("Yes"); return;
+#define NO cout << ("NO"); return;
+#define YES cout << ("YES"); return;
 
 #ifdef LOCAL
-#define dbg(x) cout << #x << " = " << x << "\n"
+#define dbg(x) cerr << #x << " = " << x << "\n"
 #else
 #define dbg(x)
 #endif
 
-
-int bw(unsigned long long x) {
-    return x == 0 ? 0 : 64 - __builtin_clzll(x);
-}
 
 // Constants
 const ll INF  = 1e18;
@@ -74,31 +69,62 @@ void printstruct(auto& s){
     
 }
 
-#ifdef LOCAL
-#define ps(x) printstruct(x) << "\n"
-#else
-#define ps(x)
-#endif
+vvll adj;
+vll parent;
 
-template<typename... Args>
-void input(Args&... args) {
-    ((cin >> args), ...);
-}
-
-template<typename... Args>
-void out(const Args&... args) {
-    ((cout << args), ...);
+void dfs(ll p,ll nparent){
+    for(ll c: adj[p]){
+        if(c == nparent){
+            continue;
+        }
+        parent[c] = p;
+        dfs(c,p);
+    }
 }
 
 void solve(){
-    ll m,n,k,x,in;
+    adj.clear();
+    parent.clear();
+    ll m,n,k,x,input;
     bool b;
     str s;
-    input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    cin >> n;
+    adj.resize(n+1);
+    parent.resize(n+1);
+    vll leaves(n+1);
+    rep(i,0,n-1){
+        cin >> m;
+        cin >> k;
+        adj[m].push_back(k);
+        adj[k].push_back(m);
     }
+    dfs(1,0);
+    rep(i,2,n+1){
+        if(sz(adj[i] ) != 1){
+            //cout << "!" << i;
+            continue;
+        }
+        ll j = i;
+        leaves[i]++;
+        while(parent[j] != 1){
+            j = parent[j];
+            leaves[j]++;
+        }
+        leaves[1]++;
+    }
+    //printstruct(parent);
+
+    //printstruct(leaves);
+    cin >> n;
+    
+    rep(i,0,n){
+        cin >> m;
+        cin >> k;
+        cout << leaves[k] * leaves[m] << "\n";
+    
+    }
+    leaves.clear();
+
     
 
 }
@@ -112,7 +138,7 @@ int main()
     cin >> t;
     while (t--){
         solve();
-        out("\n");
+        //cout << "\n";
     }
     return 0;
 }

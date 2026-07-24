@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START248D/problems/AVGSURV
 Rating:
 Platform:
 Duration: 
@@ -91,18 +91,20 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
+    int n,k,x,in;
     bool b;
     str s;
     input(n);
     vll v(n);
+    map<int,int> freq;
+    int maxm = 0;
     rep(i,0,n){
-        //input(v[i]);
+        input(in);
+        freq[in]++;
+        maxm = max(in,maxm);
     }
-    
-
+    out(freq[maxm]);
 }
-
 int main()
 {
     ios::sync_with_stdio(false);

@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2246/problem/C
 Rating:
 Platform:
 Duration: 
@@ -90,15 +90,64 @@ void out(const Args&... args) {
     ((cout << args), ...);
 }
 
+ll power(ll base, ll exp, ll mod) {
+    ll result = 1;
+    base %= mod;
+    while (exp > 0) {
+        //exp & 1 means that 
+        if (exp & 1) result = result * base % mod;
+        base = (base * base) % mod; //
+        exp >>= 1; //divides by 2
+    }
+    return result;
+}
+
+ll modinvprime(ll a, ll mod) { return power(a, mod - 2, mod); } // mod must be prime
+
+
 void solve(){
-    ll m,n,k,x,in;
+    ll n,k,x,in;
     bool b;
     str s;
     input(n);
-    vll v(n);
+    map<ll,ll> m;
+    ll subsets = 1;
     rep(i,0,n){
-        //input(v[i]);
+        input(in);
+        m[in]++;
     }
+    for (const auto& [k, v] : m) {
+        subsets *= power(2,v-1,MOD);
+        subsets %= MOD;
+    }
+    //ll tot_subsets = subsets;
+   // ll half = modinvprime(2,MOD);
+   // if(m[-1] % 2 == 0 && m[-1] > 0){
+    //    subsets *= half;
+   //     subsets %= MOD;
+   // }
+    if(m[-1] > 0){
+        ll post_subsets = 1;
+        ll quarter = modinvprime(4,MOD);
+        for (const auto& [k, v] : m) {
+            if(m.count(k+1)){
+                post_subsets++;
+            }
+        }
+        //out(subsets,"!\n");
+        subsets *= post_subsets;
+    }
+    subsets %= MOD;
+    
+
+    out(subsets);
+    
+
+
+
+
+
+
     
 
 }

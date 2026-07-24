@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2247/problem/D1
 Rating:
 Platform:
 Duration: 
@@ -90,15 +90,40 @@ void out(const Args&... args) {
     ((cout << args), ...);
 }
 
+bool sortable1(vll& v,int group_size){
+    pll cur = {-1,-1};
+    pll prev = {-1,-1};
+    rep(i,0,sz(v)){
+        if((i % group_size) == 0){
+            if(prev.second > cur.first){
+                return false;
+            }
+            prev = cur;
+            cur = {v[i],v[i]};
+        }
+        else{
+            cur = {min(cur.fi,v[i]),max(cur.se,v[i])};
+        }
+    }
+    return cur.first >= prev.second;
+}
+
 void solve(){
     ll m,n,k,x,in;
     bool b;
     str s;
-    input(n);
+    input(n,in);
     vll v(n);
     rep(i,0,n){
-        //input(v[i]);
+        input(v[i]);
     }
+    b = false;
+    int group_size = 1;
+    while(!sortable1(v,group_size)){
+        group_size *= 2;
+    }
+    cout << group_size/2;
+
     
 
 }

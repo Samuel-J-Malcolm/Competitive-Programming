@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START248D/problems/SWAPSM
 Rating:
 Platform:
 Duration: 
@@ -95,10 +95,26 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
+    vll v;
+    m = 0;
     rep(i,0,n){
-        //input(v[i]);
+        input(in);
+        if(in > 0){
+            v.push_back(in);
+        }
+        else{
+            m++;
+        }
     }
+    string out1 = "";
+    rep(i,0,m){
+        out1 += "0 ";
+    }
+    for(ll i: v){
+        out1 += to_string(i) + " ";
+    }
+    out1.pop_back();
+    out(out1);
     
 
 }
