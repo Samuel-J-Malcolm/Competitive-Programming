@@ -107,7 +107,7 @@ void solve(){
     str s;
     input(n);
     vll v(n);
-    rounds = {1,1e4+1,1e8+1e4+1,}
+    rounds = {1,1e4+1,1e8+1e4+1}
 
 
 }
