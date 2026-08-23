@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START251C/problems/MAKEDISTK
 Rating:
 Platform:
 Duration: 
@@ -95,10 +95,28 @@ void solve(){
     bool b;
     str s;
     input(n);
+    input(k);
     vll v(n);
     rep(i,0,n){
-        //input(v[i]);
+        input(v[i]);
     }
+    sort(all(v));
+    vll v1(n);
+    v1[0] = v[0];
+    rep(i,1,n){
+        v1[i] = max(v1[i-1]+1,v[i]);
+    }
+    x = 0;
+    m = 0;
+    rep(i,0,n){
+        v1[i] -= v[i];
+        x += v1[i];
+        m = max(v1[i],m);
+    }
+    
+
+    out(max((x+k-1)/k,m));
+
     
 
 }

@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc468/tasks/abc468_d
 Rating:
 Platform:
 Duration: 
@@ -92,13 +92,62 @@ void out(const Args&... args) {
 
 void solve(){
     ll m,n,k,x,in;
-    bool b;
     str s;
-    input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    input(s);
+    n = sz(s);
+    if(n == 1){
+        out(1);
     }
+    else if(n == 2){
+        out(3);
+    }
+    else if (n == 3){
+        out(7);
+    }
+    if(n<4){
+        return;
+    }
+    std::vector<bool> b(n*n);
+    x = 0;
+
+    rep(i,0,n){
+        ll unpaired = 0;
+        ll r = i;
+        ll l = i;
+        while(unpaired <= 1){
+            if(r >= n || l < 0){
+                break;
+            }
+            if(s[r] != s[l]){
+                unpaired++;
+            }
+            if(unpaired > 1){
+                break;
+            }
+            x++;
+            r++;
+            l--;
+        }
+        unpaired = 0;
+        r = i+1;
+        l = i;
+        while(unpaired <= 1){
+            if(r >= n || l < 0){
+                break;
+            }
+            if(s[r] != s[l]){
+                unpaired++;
+            }
+            if(unpaired > 1){
+                break;
+            }
+            x++;
+            r++;
+            l--;
+        }
+    }
+    out(x);
+    
     
 
 }
@@ -107,17 +156,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    //cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

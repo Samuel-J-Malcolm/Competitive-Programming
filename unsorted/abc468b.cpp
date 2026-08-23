@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc468/tasks/abc468_b
 Rating:
 Platform:
 Duration: 
@@ -91,14 +91,29 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
-    bool b;
+    set<int> s1;
     str s;
+    ll(n);
     input(n);
-    vll v(n);
+    ll d;
+    input(d);
+    input(s);
     rep(i,0,n){
-        //input(v[i]);
+        if(s[i] == 'G'){
+            s1.insert(i);
+            rep(j,1,d+1){
+                if(i-j >= 0){
+                    s1.insert(i-j);
+                }
+                if(i+j < n){
+                    s1.insert(i+j);
+                }
+            }
+        }
     }
+    //printstruct(s1);
+
+    out(n-sz(s1));
     
 
 }
@@ -107,17 +122,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    //cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

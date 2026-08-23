@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2253/problem/A
 Rating:
 Platform:
 Duration: 
@@ -95,10 +95,15 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    n++;
+    ll i = 2;
+    while(i*i<=n){
+        if(n % i == 0 && n != i){
+            NO;
+        }
+        i++;
     }
+    YES;
     
 
 }
@@ -107,17 +112,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

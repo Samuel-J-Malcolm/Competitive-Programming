@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc469/tasks/abc469_c
 Rating:
 Platform:
 Duration: 
@@ -95,10 +95,24 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
+    m = 1; //hits
+    input(s);
+    x = 0;
     rep(i,0,n){
-        //input(v[i]);
+        m--;
+        if(s[i] == 'o'){
+            m++;
+        }
+        if(m == 0){
+            m++;
+            x++;
+            out(i+1,"\n");
+        }
     }
+    rep(i,x,n){
+        out(n,"\n");
+    }
+
     
 
 }
@@ -107,17 +121,11 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    //cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
     }
     return 0;
 }

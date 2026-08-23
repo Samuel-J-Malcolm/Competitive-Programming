@@ -2,7 +2,7 @@
 Link: $url$
 Rating:
 Platform:
-Duration: 
+Duration:
 */
 
 #include <bits/stdc++.h>
@@ -71,7 +71,7 @@ void printstruct(auto& s){
     }
     cout << ")";
     cout << "\n";
-    
+
 }
 
 #ifdef LOCAL
@@ -99,7 +99,7 @@ void solve(){
     rep(i,0,n){
         //input(v[i]);
     }
-    
+
 
 }
 
@@ -112,7 +112,7 @@ int main()
     if(multi){
         cin >> t;
     }
-    
+
     while (t--){
         solve();
         if(multi){

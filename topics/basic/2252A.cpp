@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2252/problem/A
 Rating:
 Platform:
 Duration: 
@@ -91,14 +91,21 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
+    int n,k,x,in;
     bool b;
     str s;
     input(n);
-    vll v(n);
+    map<int,int> m;
     rep(i,0,n){
-        //input(v[i]);
+        input(in);
+        m[in]++;
     }
+    ll d = 0;
+    ll d1 = 0;
+    for(auto& [k,v]: m){
+        d += k*min(v,(n-v)+2);
+    }
+    out(d);
     
 
 }
@@ -107,17 +114,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

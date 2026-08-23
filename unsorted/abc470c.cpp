@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc470/tasks/abc470_c
 Rating:
 Platform:
 Duration: 
@@ -95,10 +95,36 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    input(m);
+    set<int> g1 = {};
+    vector<int> v(n);
+    int xor1 = 0;
+    rep(i,0,m){
+        input(k);
+        if(k == 1){
+            input(k);
+            xor1 ^= v[k];
+            v[k]++;
+            xor1 ^= v[k];
+            g1.insert(k);
+        }
+        else{
+            vector<int> erases;
+            for(int j: g1){
+                xor1 ^= v[j];
+                v[j]--;
+                xor1 ^= v[j];
+                if(v[j] == 0){
+                    erases.push_back(j);
+                }
+            }
+            for(int j: erases){
+                g1.erase(j);
+            }
+        }
+        out(xor1,"\n");
     }
+    
     
 
 }
@@ -107,17 +133,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    //cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        //out("\n");
     }
     return 0;
 }

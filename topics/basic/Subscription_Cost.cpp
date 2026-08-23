@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START250D/problems/SUBCOST7
 Rating:
 Platform:
 Duration: 
@@ -95,9 +95,12 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    input(k);
+    input(x);
+    if(n <= 3){
+        out(n*k);
+    }else{
+        out(3*k+(n-3)*x);
     }
     
 
@@ -107,17 +110,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

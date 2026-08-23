@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc470/tasks/abc470_b
 Rating:
 Platform:
 Duration: 
@@ -91,14 +91,19 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
+    ll n,k,x,in;
     bool b;
     str s;
     input(n);
     vll v(n);
+    map<ll,ll> m;
+    x = 0;
     rep(i,0,n){
-        //input(v[i]);
+        input(in);
+        m[in]++;
+        x = max(x,m[in]);
     }
+    out(n-x);
     
 
 }
@@ -107,17 +112,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    //cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

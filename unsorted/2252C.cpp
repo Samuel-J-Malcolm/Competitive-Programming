@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2252/problem/C
 Rating:
 Platform:
 Duration: 
@@ -93,12 +93,51 @@ void out(const Args&... args) {
 void solve(){
     ll m,n,k,x,in;
     bool b;
-    str s;
-    input(n);
-    vll v(n);
+    input(n,m);
+
+    vll stability(n);
+    vvll danger(n);
+    map<int,int> freq;
     rep(i,0,n){
-        //input(v[i]);
+        input(stability[i]);
     }
+    rep(i,0,n){
+        rep(j,0,m){
+            input(in);
+            danger[i].push_back(in);
+        }
+    }
+    x = m;
+    ll sum = 0;
+    repn(i,n-1,-1,1){
+        rep(j,0,m){
+            freq[-danger[i][j]]+=1;
+        }
+        ll idx = 0;
+        ll g = stability[i];
+        for(auto& [k,v]: freq){
+            rep(i,0,v){
+                idx++;
+                g+= k; //-= k
+                if(g <= 0){
+                    break;
+                }
+                if(idx >= x){
+                    break;
+                }
+
+            }
+            if(g <= 0){
+                x = idx;
+                break;
+            }
+            if(idx >= x){
+                break;
+            }
+
+        }
+    }
+    out(x);
     
 
 }
@@ -107,17 +146,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

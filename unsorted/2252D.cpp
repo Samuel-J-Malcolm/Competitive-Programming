@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2252/problem/D
 Rating:
 Platform:
 Duration: 
@@ -65,13 +65,15 @@ const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
 void printstruct(auto& s){
-    cout << "(";
+    int idx = 0;
     for(auto c: s){
-        cout << c << " ";
-    }
-    cout << ")";
-    cout << "\n";
-    
+        cout << c;
+        idx++;
+        if(idx != sz(s)){
+            cout << " ";
+        }
+        
+    }    
 }
 
 #ifdef LOCAL
@@ -96,9 +98,44 @@ void solve(){
     str s;
     input(n);
     vll v(n);
+    vll post_sub(n);
+    post_sub[0] = -1;
+    post_sub[n-1] = -1;
     rep(i,0,n){
-        //input(v[i]);
+        input(v[i]);
     }
+    ll max_sub = 0;
+    rep(i,1,n-1){
+        if((v[i-1]+v[i+1]) % 2 == 0){
+            post_sub[i] = v[i]*2-v[i+1]-v[i-1];
+            max_sub = max(max_sub,post_sub[i]);
+        }
+    }
+    ll maxi;
+    while(max_sub > 0){
+        max_sub = 0;
+        rep(i,1,n-1){
+            if(post_sub[i] > 0){
+                maxi = i;
+                max_sub = post_sub[i];
+                break;
+            }
+        }
+        if(max_sub <= 0){
+            break;
+        }
+        v[maxi] -= max_sub;
+        if(post_sub[maxi+1] != -1){
+            post_sub[maxi+1] -= post_sub[maxi];
+        }
+        if(post_sub[maxi-1] != -1){
+            post_sub[maxi-1] -= post_sub[maxi];
+        }
+        post_sub[maxi] = v[maxi]*2-v[maxi+1]-v[maxi-1];
+    }
+    printstruct(v);
+    
+
     
 
 }
@@ -107,17 +144,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

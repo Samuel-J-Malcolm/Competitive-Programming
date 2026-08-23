@@ -2,7 +2,7 @@
 Link: $url$
 Rating:
 Platform:
-Duration: 
+Duration:
 */
 
 #include <bits/stdc++.h>
@@ -64,21 +64,16 @@ const ll INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
-void printstruct(auto& s){
+void printstruct(vll& s){
     cout << "(";
-    for(auto c: s){
+    for(ll c: s){
         cout << c << " ";
     }
     cout << ")";
     cout << "\n";
-    
+
 }
 
-#ifdef LOCAL
-#define ps(x) printstruct(x) << "\n"
-#else
-#define ps(x)
-#endif
 
 template<typename... Args>
 void input(Args&... args) {
@@ -95,11 +90,28 @@ void solve(){
     bool b;
     str s;
     input(n);
+    input(k);
     vll v(n);
+    vll v1(n-1);
     rep(i,0,n){
-        //input(v[i]);
+        input(v[i]);
+        if(i != 0){
+            v1[i-1] = (v[i] * 2 > v[i-1]);
+        }
     }
-    
+    vll v2(n-1-k);
+    ll cur = k-1;
+    x = 0;
+    rep(i,0,n-1){
+        if(!v1[i]){
+            cur = i + k;
+        }
+        if(i >= cur){
+            x++;
+        }
+    }
+    out(x);
+
 
 }
 
@@ -112,7 +124,7 @@ int main()
     if(multi){
         cin >> t;
     }
-    
+
     while (t--){
         solve();
         if(multi){

@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2253/problem/B
 Rating:
 Platform:
 Duration: 
@@ -67,7 +67,7 @@ const ll  MOD = 1e9 + 7;
 void printstruct(auto& s){
     cout << "(";
     for(auto c: s){
-        cout << c << " ";
+        cout << c.fi << "," << c.se << " ";
     }
     cout << ")";
     cout << "\n";
@@ -96,9 +96,52 @@ void solve(){
     str s;
     input(n);
     vll v(n);
+    vector<pll> v1;
+    ll current_run = 1;
+    ll current_color = -1;
+
     rep(i,0,n){
-        //input(v[i]);
+        input(v[i]);
     }
+    rep(i,0,n){
+        if(i == 0){
+            current_color = v[i];
+            continue;
+        }
+        if(v[i] != current_color){
+            v1.push_back({current_color,current_run});
+            current_run = 0;
+            current_color = v[i];
+        }
+        current_run++;
+    }
+    v1.push_back({current_color,current_run});
+    x = 0;
+    rep(i,0,v1.size()){
+        if(v1[i].se == 1){
+            continue;
+        }
+        if(i != 0){
+            
+            if(v1[i-1].se >= 2){
+                x = 2;
+            }
+            else if(i == 1 ||  v1[i-2].fi != v1[i].fi){
+                x = max(x,1LL);
+            }
+        }
+        if(i != v1.size()-1){
+            if(v1[i+1].se >= 2){
+                x = 2;
+            }
+            else if(i == sz(v1)-2 || v1[i+2].fi != v1[i].fi){
+                x = max(x,1LL);
+            }
+        }
+    }
+
+    out(v1.size()+x);
+
     
 
 }
@@ -107,17 +150,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

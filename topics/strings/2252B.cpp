@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2252/problem/B
 Rating:
 Platform:
 Duration: 
@@ -96,9 +96,34 @@ void solve(){
     str s;
     input(n);
     vll v(n);
+    pll p;
+    pll p1;
+    input(s);
+    x = 0;
     rep(i,0,n){
-        //input(v[i]);
+        if(s[i] == '0'){
+            p.fi++;
+        }
+        else{
+            p.se++;
+        }
+        if(i != 0 && s[i] == s[i-1]){
+            x++;
+            if(s[i] == '0'){
+                p1.fi++;
+            }
+            else{
+                p1.se++;
+            }
+        }
     }
+    if(abs(p.fi-p.se) > 2){
+        out(-1);
+        return;
+    }
+    
+    out(max(p1.fi,p1.se)+max(min(p1.fi,p1.se),max(p1.fi,p1.se)-1));
+
     
 
 }
@@ -107,17 +132,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2252/problem/E
 Rating:
 Platform:
 Duration: 
@@ -91,14 +91,8 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
-    bool b;
-    str s;
+    ll n;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
-    }
     
 
 }
@@ -107,17 +101,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc469/tasks/abc469_b
 Rating:
 Platform:
 Duration: 
@@ -95,10 +95,31 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    input(s);
+    m = 0;
+    rep(i,1,n-1){
+        if(s[i] == 'x' && s[i-1] == 'x' && s[i+1] == 'x'){
+            m++;
+        }
     }
+    if(n == 1){
+        if(s[0] == 'x'){
+            m++;
+        }
+    }
+    else{
+        if(s[0] == 'x' && s[1] == 'x'){
+            m++;
+        }
+        if(s[n-1] == 'x' && s[n-2] == 'x'){
+            m++;
+        }
+        if(n == 2){
+            m /= 2;
+        }    
+    }
+    
+    out(m);
     
 
 }
@@ -107,17 +128,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    //cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

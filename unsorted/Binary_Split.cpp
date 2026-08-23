@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START251C/problems/BINSPLT
 Rating:
 Platform:
 Duration: 
@@ -95,10 +95,30 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    input(s);
+    vector<string> s1;
+    str current1;
+    str prev1;
+    current1.push_back(s[0]);
+    rep(i,1,n){
+        if(current1[0] != s[i]){
+            if(prev1 != ""){
+                s1.push_back(prev1+current1);
+            }
+            prev1 = current1;
+            current1 = "";
+        }
+        current1.push_back(s[i]);
     }
+    if(prev1 != ""){
+        s1.push_back(prev1+current1);
+    }
+    if(sz(s1) == 0){
+        out(s);
+        return;
+    }
+    sort(all(s1));
+    out(s1[0]);
     
 
 }

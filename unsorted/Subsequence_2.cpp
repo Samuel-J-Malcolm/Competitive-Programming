@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START250D/problems/SUB2
 Rating:
 Platform:
 Duration: 
@@ -107,17 +107,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

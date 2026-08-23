@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START251C/problems/BUSROW
 Rating:
 Platform:
 Duration: 
@@ -95,10 +95,11 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
-    }
+    input(m);
+    input(x);
+    ll row = (x-1)/m;
+    out(min(row+1,n-row));
+
     
 
 }

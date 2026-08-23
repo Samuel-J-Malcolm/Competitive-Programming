@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://codeforces.com/contest/2254/problem/E
 Rating:
 Platform:
 Duration: 
@@ -95,9 +95,32 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
+    map<ll,ll> freq;
+    x = 0;
     rep(i,0,n){
-        //input(v[i]);
+        input(in);
+        freq[in]++;
+        x+= in;
+    }
+    if(x <= 0){
+        out(-1);
+        return;
+    }
+    else{
+        k = 0;
+        rep(i,0,n){
+            auto a = freq.lower_bound(1-k);
+            //out(k," ",a->first," ",a->second,"\n");
+            k += a->first;
+            out(k);
+            if(i != n){
+                out(" ");
+            }
+            freq[a->first]--;
+            if(freq[a->first] == 0){
+                freq.erase(a->first);
+            }
+        }
     }
     
 
@@ -107,17 +130,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

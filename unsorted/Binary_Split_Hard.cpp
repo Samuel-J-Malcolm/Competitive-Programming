@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START251C/problems/BINSPLT
 Rating:
 Platform:
 Duration: 
@@ -95,12 +95,65 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    input(s);
+    vector<int> inversions;
+    inversions.push_back(0);
+    rep(i,1,n){
+        if(s[i-1] != s[i]){
+            inversions.push_back(i);
+        }
     }
-    
+    char start = s[0];
+    if(sz(inversions) <= 2){
+        out(str(n,'1'));
+        return;
+    }
+    else if(sz(inversions) == 3){
+        if(start == '0'){
+            out(str(inversions[2],'1')+str(n-inversions[2],'0'));
+        }
+        else{
+            out(str(n,'1'));
+        }
+        return;
+    }
+    vector<vll> inv;
 
+    rep(i,1,sz(inversions)-1){
+        if(s[inversions[i]] == '1'){
+            continue;
+        }
+        inv.push_back({inversions[i]-inversions[i-1],inversions[i+1]-inversions[i],i});
+    }
+
+    sort(rall(inv));
+    ll idx = inversions[inv[0][2]];
+
+    s.replace(idx, inv[0][1], str(inv[0][1],'1'));
+        vector<string> s1;
+    str current1;
+    str prev1;
+    current1.push_back(s[0]);
+    rep(i,1,n){
+        if(current1[0] != s[i]){
+            if(prev1 != ""){
+                s1.push_back(prev1+current1);
+            }
+            prev1 = current1;
+            current1 = "";
+        }
+        current1.push_back(s[i]);
+    }
+    if(prev1 != ""){
+        s1.push_back(prev1+current1);
+    }
+    if(sz(s1) == 0){
+        out(s);
+        return;
+    }
+    sort(all(s1));
+    out(s1[0]);
+    
 }
 
 int main()

@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START251C/problems/MUL123
 Rating:
 Platform:
 Duration: 
@@ -95,9 +95,14 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    if(n % 3 == 0){
+        out(0);
+    }
+    else if(n % 3 == 2 || (n % 5 != 0 &&  (n+5-n%5) % 3 == 0) || (n+5) % 15 == 0){
+        out(1);
+    }
+    else{
+        out(2);
     }
     
 

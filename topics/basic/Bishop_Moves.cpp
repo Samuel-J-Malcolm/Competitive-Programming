@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START250D/problems/BISHOPMV
 Rating:
 Platform:
 Duration: 
@@ -94,30 +94,30 @@ void solve(){
     ll m,n,k,x,in;
     bool b;
     str s;
-    input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    pll p1;
+    pll p2;
+    input(p1.fi,p1.se,p2.fi,p2.se);    
+    if(p1.fi-p1.se == p2.fi-p2.se || p1.fi+p1.se == p2.fi + p2.se){
+        out(1);
     }
-    
-
+    else if((p1.fi + p1.se - p2.fi - p2.se) % 2 == 0){
+        out(2);
+    }
+    else{
+        out(-1);
+    }
 }
 
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

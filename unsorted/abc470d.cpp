@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc470/tasks/abc470_d
 Rating:
 Platform:
 Duration: 
@@ -91,14 +91,36 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
+    ll q,m,n,k,x,y,in;
     bool b;
     str s;
     input(n);
+    input(q);
     vll v(n);
+    vll v1(n);
     rep(i,0,n){
-        //input(v[i]);
+        input(in);
+        v[i] = in-1;// ADD 1 at the end
     }
+    vector<vll> loops;
+    set<ll> seen;
+    ll init = 0;
+    rep(i,0,n){
+        if(seen.count(i)){
+            continue;
+        }
+        loops.push_back({i});
+        init = i;
+        ll cur = i;
+        seen.insert(cur);
+        while(v[cur] != init){
+            cur = v[cur];
+            loops[sz(loops)-1].push_back(cur);
+            seen.insert(cur);
+        }
+    }
+    
+
     
 
 }
@@ -107,17 +129,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    //cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        //out("\n");
     }
     return 0;
 }

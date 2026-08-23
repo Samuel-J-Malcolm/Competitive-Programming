@@ -2,7 +2,7 @@
 Link: $url$
 Rating:
 Platform:
-Duration: 
+Duration:
 */
 
 #include <bits/stdc++.h>
@@ -64,21 +64,7 @@ const ll INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
-void printstruct(auto& s){
-    cout << "(";
-    for(auto c: s){
-        cout << c << " ";
-    }
-    cout << ")";
-    cout << "\n";
-    
-}
 
-#ifdef LOCAL
-#define ps(x) printstruct(x) << "\n"
-#else
-#define ps(x)
-#endif
 
 template<typename... Args>
 void input(Args&... args) {
@@ -92,14 +78,39 @@ void out(const Args&... args) {
 
 void solve(){
     ll m,n,k,x,in;
-    bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    if(n % 2 == 1){
+       out(-1);
+       return; 
     }
-    
+    ll a,b;
+    a = 0;
+    b = 0;
+    m = 2*n;
+    repn(i,29,-1,1){
+        //out(n," ",n >> i," ",n >> i & 1,"!\n");
+        if((n >> i) & 1 == 1){
+            m -= 1 << i;
+            b += 1 << i;
+        }
+        else{
+            if(m >= 1 << (i+1)){
+                m -= (1 << (i));
+                m -= (1 << (i));
+                a += (1 << i);
+                b += (1 << i);
+            }
+        }
+        //out(1<<i," ",m," ",a," ",b,"\n");
+    }
+    if(m == 0 && a ^ b == (a+b)/2){
+        //out(a," ", b,"$",a ^ b);
+        out(a," ",b);
+        return;
+    }
+    out(-1);
+
 
 }
 
@@ -112,7 +123,7 @@ int main()
     if(multi){
         cin >> t;
     }
-    
+
     while (t--){
         solve();
         if(multi){

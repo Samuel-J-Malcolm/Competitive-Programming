@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START251C/problems/CHOCGM
 Rating:
 Platform:
 Duration: 
@@ -96,9 +96,28 @@ void solve(){
     str s;
     input(n);
     vll v(n);
+    x = 0;
+    ll odds = 0;
     rep(i,0,n){
-        //input(v[i]);
+        input(v[i]);
+        x += v[i];
+        if(v[i] % 2 == 1){
+            odds++;
+        }
     }
+    k = 0;
+    if(odds % 2 == 0){
+        for(int i: v){
+            k += i - i % 2;
+        }
+        k += (odds+1)/2;
+        out(k);
+    }
+    else{
+        k += (odds)/2;
+        out(k);
+    }
+
     
 
 }

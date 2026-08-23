@@ -2,7 +2,7 @@
 Link: $url$
 Rating:
 Platform:
-Duration: 
+Duration:
 */
 
 #include <bits/stdc++.h>
@@ -71,7 +71,7 @@ void printstruct(auto& s){
     }
     cout << ")";
     cout << "\n";
-    
+
 }
 
 #ifdef LOCAL
@@ -95,11 +95,31 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
+    vll v(10);
     rep(i,0,n){
-        //input(v[i]);
+        input(in);
+        v[in % 10]++;
     }
-    
+    rep(i,0,10){
+        rep(j,0,10){
+            rep(k,0,10){
+                if((i+j+k) % 10 == 3){
+                    v[i]--;
+                    v[j]--;
+                    v[k]--;
+                    if(v[i] >= 0 && v[j] >= 0 && v[k] >= 0){
+                        YES;
+                    }
+                    v[i]++;
+                    v[j]++;
+                    v[k]++;
+                }
+            }
+        }
+    }
+    NO;
+
+
 
 }
 
@@ -112,7 +132,7 @@ int main()
     if(multi){
         cin >> t;
     }
-    
+
     while (t--){
         solve();
         if(multi){

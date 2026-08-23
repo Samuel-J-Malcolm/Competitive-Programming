@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc470/tasks/abc470_a
 Rating:
 Platform:
 Duration: 
@@ -95,10 +95,14 @@ void solve(){
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    rep(i,1,n+1){
+        if(i % 3 == 0){
+        out("Fizz\n");
+        }else{
+            out(i,"\n");
+        }
     }
+    
     
 
 }
@@ -107,17 +111,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    //cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        //out("\n");
     }
     return 0;
 }

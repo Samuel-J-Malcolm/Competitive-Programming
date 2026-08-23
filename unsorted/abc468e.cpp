@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc468/tasks/abc468_e
 Rating:
 Platform:
 Duration: 
@@ -62,7 +62,7 @@ int bw(unsigned long long x) {
 const ll INF  = 1e18;
 const ll INF32 = 1e9;
 const ld  EPS = 1e-9;
-const ll  MOD = 1e9 + 7;
+const ll  MOD = 998244353;
 
 void printstruct(auto& s){
     cout << "(";
@@ -90,15 +90,55 @@ void out(const Args&... args) {
     ((cout << args), ...);
 }
 
+ll power(ll base, ll exp, ll mod) {
+    ll result = 1;
+    base %= mod;
+    while (exp > 0) {
+        //exp & 1 means that 
+        if (exp & 1) result = result * base % mod;
+        base = (base * base) % mod; //
+        exp >>= 1; //divides by 2
+    }
+    return result;
+}
+
+ll modinvprime(ll a, ll mod) { return power(a, mod - 2, mod); } // mod must be prime
+
+
 void solve(){
     ll m,n,k,x,in;
     bool b;
     str s;
     input(n);
     vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    vll inv1(n);
+    rep(i,1,n+1){
+        inv1[i-1] = modinvprime(i,MOD);
     }
+    ll t = 0;
+    ll f = 0;
+    rep(i,0,n){
+        input(v[i]);
+    }
+    f = 0;
+    vll prefsum(n);
+    rep(l,1,n+1){
+        m = inv1[l-1];
+        m %= MOD;
+        f += m;
+        f %= MOD;
+        prefsum[l-1] = f;
+    }
+    rep(i,0,n){
+        t += f*v[i] % MOD;
+        if(i != n-1){
+            f += prefsum[n-i-1];
+            f %= MOD;
+            f -= prefsum[i+1]-MOD;
+            f %= MOD;
+        }
+    }
+    out(t);
     
 
 }
@@ -107,17 +147,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    //cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START250D/problems/SUB1
 Rating:
 Platform:
 Duration: 
@@ -90,6 +90,47 @@ void out(const Args&... args) {
     ((cout << args), ...);
 }
 
+
+map<pll,ll> dp;
+map<pll,bool> init;
+int solvearr(vll& v,ll start,ll startIdx){
+    ll maxval = 0;
+    ll current = start;
+    rep(i,startIdx,sz(v)){
+        if(v[i] == 1 && current == 1){
+            maxval++;
+        }
+        if(v[i] == current + 1){
+            current++;
+            maxval++;
+        }
+        
+        if(v[i] == 1 && current != 1){
+            ll a1,a2;
+            if(init[{current,i+1}]){
+                a1 = dp[{current,i+1}];
+            }
+            else{
+                a1 = solvearr(v,current,i+1);
+                init[{current,i+1}] = true;
+                dp[{current,i+1}] = a1;
+            }
+            
+            if(init[{1,i+1}]){
+                a2 = dp[{1,i+1}]+1;
+            }
+            else{
+                a2 = solvearr(v,1,i+1);
+                init[{1,i+1}] = true;
+                dp[{1,i+1}] = a2;
+                a2++;
+            }
+            return max(a1,a2)+maxval;
+        }
+    }
+    return maxval;
+}
+
 void solve(){
     ll m,n,k,x,in;
     bool b;
@@ -97,8 +138,11 @@ void solve(){
     input(n);
     vll v(n);
     rep(i,0,n){
-        //input(v[i]);
+        input(v[i]);
     }
+    dp.clear();
+    init.clear();
+    out(solvearr(v,0,0));
     
 
 }
@@ -107,17 +151,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

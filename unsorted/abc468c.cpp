@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://atcoder.jp/contests/abc468/tasks/abc468_c
 Rating:
 Platform:
 Duration: 
@@ -91,14 +91,42 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
-    bool b;
-    str s;
+    vector<ll> factorials = {1,1,2,6,24,120,720,5040,40320,362880,3628800};
+    ll x,y,n;
     input(n);
     vll v(n);
+    vll v1(n);
     rep(i,0,n){
-        //input(v[i]);
+        input(v[i]);
     }
+    rep(i,0,n){
+        input(v1[i]);
+    }
+    unordered_set<int> a_set = {};
+    rep(i,1,n+1){
+        a_set.insert(i);
+    }
+    unordered_set<int> c_set = a_set;
+    x = 0;
+    rep(i,0,n){
+        c_set.erase(v[i]);
+        for(int i1: c_set){
+            if(i1 < v[i]){
+                x += factorials[n-i-1];
+            }
+        }
+    }
+    c_set = a_set;
+    y = 0;
+    rep(i,0,n){
+        c_set.erase(v1[i]);
+        for(int i1: c_set){
+            if(i1 < v1[i]){
+                y += factorials[n-i-1];
+            }
+        }
+    }
+    out(max(y-x-1,0LL));
     
 
 }
@@ -107,17 +135,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    //cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }

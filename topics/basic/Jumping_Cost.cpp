@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://www.codechef.com/START250D/problems/JUMPCOST
 Rating:
 Platform:
 Duration: 
@@ -96,9 +96,19 @@ void solve(){
     str s;
     input(n);
     vll v(n);
+    vll best(n);
     rep(i,0,n){
-        //input(v[i]);
+        input(v[i]);
     }
+    m = 0;
+    rep(j,1,n){
+        best[j] = -1e9;
+        rep(i,0,j){
+            best[j] = max(best[j],best[i]-j+i+v[j]);
+        }
+        m = max(m,best[j]);
+    }
+    out(m);
     
 
 }
@@ -107,17 +117,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+
     ll t = 1;
-    if(multi){
-        cin >> t;
-    }
-    
+    cin >> t;
     while (t--){
         solve();
-        if(multi){
-            out("\n");
-        }
+        out("\n");
     }
     return 0;
 }
