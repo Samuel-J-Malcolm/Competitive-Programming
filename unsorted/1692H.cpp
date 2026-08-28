@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: 1692H
 Rating:
 Platform:
 Duration:
@@ -96,9 +96,28 @@ void solve(){
     str s;
     input(n);
     vll v(n);
+    map<ll,vll> m1;
     rep(i,0,n){
-        //input(v[i]);
+        input(in);
+        m1[in].push_back(i);
     }
+    m = 1;
+    ll cur = 1;
+    vll alr = {in,n,n};
+    for(auto& [idx,v]: m1){
+        //out(idx);
+        //printstruct(v);
+        rep(i,1,v.size()){
+            //out(idx," ",i," ",v[0]," ",v[i],"\n");
+            ll w = i+1;
+            ll l = v[i]-v[0]+1-w;
+            if((w-l) > m){
+                m = w-l;
+                alr = {idx,v[0]+1,v[i]+1};
+            }
+        }
+    }
+    out(alr[0]," ",alr[1]," ",alr[2]);
 
 
 }

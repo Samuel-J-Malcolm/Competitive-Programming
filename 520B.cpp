@@ -2,7 +2,7 @@
 Link: $url$
 Rating:
 Platform:
-Duration:
+Duration: 
 */
 
 #include <bits/stdc++.h>
@@ -71,7 +71,7 @@ void printstruct(auto& s){
     }
     cout << ")";
     cout << "\n";
-
+    
 }
 
 #ifdef LOCAL
@@ -90,23 +90,33 @@ void out(const Args&... args) {
     ((cout << args), ...);
 }
 
-ll power(ll base, ll exp) {
-    ll result = 1;
-    while (exp > 0) {
-        //exp & 1 means that 
-        if (exp & 1) result = result * base;
-        base = (base * base); //
-        exp >>= 1; //divides by 2
-    }
-    return result;
-}
-
 void solve(){
     ll m,n,k,x,in;
     bool b;
     str s;
+    input(m);
     input(n);
-    vll v(n);
+    k = 0;
+    x = 1;
+    if(m >= n){
+        out(m-n);
+        return;
+    }
+    while(m < n){
+        m *= 2;
+        x *= 2;
+        k++;
+    }
+    while(m != n){
+        if(m-n >= x){
+            k+=(m-n)/x;
+            m -= ((m-n)/x)*x;
+            
+        }
+        x /= 2;
+    }
+    out(k);
+    
 
 }
 
@@ -114,12 +124,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
+    bool multi = false;
     ll t = 1;
     if(multi){
         cin >> t;
     }
-
+    
     while (t--){
         solve();
         if(multi){

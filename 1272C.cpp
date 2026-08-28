@@ -2,7 +2,7 @@
 Link: $url$
 Rating:
 Platform:
-Duration: 
+Duration:
 */
 
 #include <bits/stdc++.h>
@@ -71,7 +71,7 @@ void printstruct(auto& s){
     }
     cout << ")";
     cout << "\n";
-    
+
 }
 
 #ifdef LOCAL
@@ -91,15 +91,31 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
+    ll m,n,k,x;
+    char in;
     bool b;
     str s;
     input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    input(m);
+    input(s);
+    set<char> c;
+    rep(i,0,m){
+        input(in);
+        c.insert(in);
     }
-    
+    k = 0;
+    x = 0;
+    rep(i,0,n){
+        if(c.count(s[i])){
+            k++;
+        }
+        else{
+            x += (k*(k+1))/2;
+            k = 0;
+        }
+    }
+    x += k*(k+1)/2;
+    out(x);
 
 }
 
@@ -107,13 +123,12 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
-    //multi = false
+    bool multi = false;
     ll t = 1;
     if(multi){
         cin >> t;
     }
-    
+
     while (t--){
         solve();
         if(multi){

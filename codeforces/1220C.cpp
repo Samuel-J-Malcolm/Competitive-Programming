@@ -91,13 +91,21 @@ void out(const Args&... args) {
 }
 
 void solve(){
-    ll m,n,k,x,in;
+    ll n,k,x,in;
     bool b;
     str s;
-    input(n);
-    vll v(n);
-    rep(i,0,n){
-        //input(v[i]);
+    char c;
+    char m = 'z'+1;
+    input(s);
+    rep(i,0,sz(s)){
+        c = s[i];
+        if(c <= m){
+            out("Mike\n");
+        }
+        else{
+            out("Ann\n");
+        }
+        m = min(c,m);
     }
     
 
@@ -107,8 +115,7 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = true;
-    //multi = false
+    bool multi = false;
     ll t = 1;
     if(multi){
         cin >> t;
