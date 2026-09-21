@@ -10,8 +10,23 @@ The problem classification below is based on reading the implementations, not on
 - [CSES/graph/Message_Route.cpp](../CSES/graph/Message_Route.cpp) is also a graph problem: it builds an adjacency list and finds a path from node 1 to node n.
 - [topics/graphs/quantumsuperposition.cpp](../topics/graphs/quantumsuperposition.cpp) is a graph/path-length problem and belongs alongside other graph algorithms, even though it is a Kattis problem and its name is not conventional.
 - [topics/strings/1272C.cpp](../topics/strings/1272C.cpp) is a string/substring counting problem, which matches the string topic bucket.
+- The current `topics/basic` directory is not a true category; it contains many small tasks such as [topics/basic/Bus_Rows.cpp](../topics/basic/Bus_Rows.cpp), [topics/basic/Teleport_Home.cpp](../topics/basic/Teleport_Home.cpp), and [topics/basic/Passing_Chain.cpp](../topics/basic/Passing_Chain.cpp), which are implementation-heavy and should be split by technique rather than left under one generic bucket.
+- The current `topics/misc` directory is similarly mixed and includes unrelated or contest-specific files such as [topics/misc/1028G.cpp](../topics/misc/1028G.cpp), [topics/misc/1692H.cpp](../topics/misc/1692H.cpp), and [topics/misc/A_Forked.py](../topics/misc/A_Forked.py), which do not form a coherent canonical topic.
+- The current `topics/single_sweep` directory contains files like [topics/single_sweep/1692G.cpp](../topics/single_sweep/1692G.cpp), [topics/single_sweep/2241C.cpp](../topics/single_sweep/2241C.cpp), and [topics/single_sweep/abc469c.cpp](../topics/single_sweep/abc469c.cpp), which are better grouped under algorithmic techniques or more specific categories than a generic one-off folder.
 
 These examples confirm the real rule: folder placement should follow the algorithmic concept of the implementation, and the repo should normalize names and duplicates accordingly.
+
+## Concrete category mapping from the current repo
+
+The following examples illustrate how the current repository should be reclassified:
+
+- Graph / connectivity / shortest path: [CSES/graph/Building_Roads.cpp](../CSES/graph/Building_Roads.cpp), [CSES/graph/Message_Route.cpp](../CSES/graph/Message_Route.cpp), [topics/graphs/abc470d.cpp](../topics/graphs/abc470d.cpp), [topics/graphs/quantumsuperposition.cpp](../topics/graphs/quantumsuperposition.cpp)
+- Strings / counting / substring logic: [topics/strings/1272C.cpp](../topics/strings/1272C.cpp), [topics/strings/1692F.cpp](../topics/strings/1692F.cpp), [topics/strings/1790E.cpp](../topics/strings/1790E.cpp), [topics/strings/2125A.cpp](../topics/strings/2125A.cpp)
+- Sorting / ordering / pair logic: [topics/sorting/2247D1.cpp](../topics/sorting/2247D1.cpp), [topics/sorting/Apartments.cpp](../topics/sorting/Apartments.cpp), [topics/sorting/distinct_numbers.cpp](../topics/sorting/distinct_numbers.cpp)
+- Implementation / easy contest tasks: [topics/basic/Adding_Dice.cpp](../topics/basic/Adding_Dice.cpp), [topics/basic/Swap_Small.cpp](../topics/basic/Swap_Small.cpp), [topics/basic/Dividing_by_2.cpp](../topics/basic/Dividing_by_2.cpp)
+- Greedy / construction / optimization: files in the current `topics/greedy` folders should remain grouped together, but the generic labels should be normalized and the naming pattern should match the actual solution concept.
+
+This classification makes the same point as the repo-wide audit: source origin (`Kattis`, `CSES`, `topics`) is not a reliable organization key, while the actual algorithmic technique is.
 
 ## Problems in the current structure
 
