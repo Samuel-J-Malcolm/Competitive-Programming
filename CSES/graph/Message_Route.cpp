@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://cses.fi/problemset/task/1667/
 Rating:
 Platform:
 Duration: 
@@ -53,7 +53,6 @@ using str = string;
 #define dbg(x)
 #endif
 
-#define outr(x) out(x); return;
 
 int bw(unsigned long long x) {
     return x == 0 ? 0 : 64 - __builtin_clzll(x);
@@ -72,13 +71,6 @@ void printstruct(const vll& s){
     cout << ("\n");    
 }
 
-void printstruct(const vector<string>& s){
-    for(auto& c: s){
-        cout << c << " ";
-    }
-    cout << ("\n");    
-}
-
 void printstruct(const vint& s){
     for(auto& c: s){
         cout << c << " ";
@@ -86,6 +78,13 @@ void printstruct(const vint& s){
     cout << ("\n");    
 }
 
+
+void printstruct(const vector<string>& s){
+    for(auto& c: s){
+        cout << c << " ";
+    }
+    cout << ("\n");    
+}
 
 
 #ifdef LOCAL
@@ -111,51 +110,64 @@ void outs(const Args&... args) {
     ((cout << args << (++n != sizeof...(args) ? " " : "")), ...);
 }
 
-int max(vint v){
-    int m = numeric_limits<int>::min();
-    for(int i: v){
-        m = max(i,m);
+vector<int> search1(int n, vvint& v,int start, int end){
+    vector<int> parent(n,-1);
+    vector<bool> visited(n,false);
+    vint path;
+    visited[start] = true;
+    queue<int> q;
+    q.push(start);
+    while(!q.empty()){
+        int cur = q.front();
+        q.pop();
+        for(int i: v[cur]){
+            if(visited[i]){
+                continue;
+            }
+            visited[i] = true;
+            parent[i] = cur;
+            
+            if(i == end){
+                while(i != start){
+                    path.push_back(i);
+                    i = parent[i];
+                }
+                path.push_back(start);
+                reverse(all(path));
+                return path;
+            }
+            q.push(i);
+        }
     }
-    return m;
-}
-
-int min(vint v){
-    int m = numeric_limits<int>::max();
-    for(int i: v){
-        m = min(i,m);
-    }
-    return m;
-}
-
-ll max(vll v){
-    ll m = numeric_limits<ll>::min();
-    for(ll i: v){
-        m = max(i,m);
-    }
-    return m;
-}
-
-ll min(vll v){
-    ll m = numeric_limits<ll>::max();
-    for(ll i: v){
-        m = min(i,m);
-    }
-    return m;
+    return {};
 }
 
 
 void solve(){
-    ll m,n,k,x,inp = 0;
+    ll m,n,k,x1,x2,inp;
     bool b;
     str s;
     in(n);
-    vll v(n);
-    rep(i,0,n){
-        //in(v[i]);
+    in(m);
+    vvint v(n);
+    pintint p;
+    rep(i,0,m){
+        in(p.fi,p.se);
+        v[p.fi-1].push_back(p.se-1);
+        v[p.se-1].push_back(p.fi-1);
     }
-    
-    
-
+    vint path = search1(n,v,0,n-1);
+    if(sz(path) == 0){
+        out("IMPOSSIBLE");
+        return;
+    }
+    s = "";
+    rep(i,0,sz(path)){
+        s += to_string(path[i]+1) + " ";
+    }
+    s.pop_back();
+    out(sz(path),"\n");
+    out(s);
 }
 
 int main()
@@ -163,7 +175,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     bool multi = true;
-    //multi = false;
+    multi = false;
     ll t = 1;
     if(multi){
         cin >> t;

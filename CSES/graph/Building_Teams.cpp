@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://cses.fi/problemset/task/1668/
 Rating:
 Platform:
 Duration: 
@@ -72,13 +72,6 @@ void printstruct(const vll& s){
     cout << ("\n");    
 }
 
-void printstruct(const vector<string>& s){
-    for(auto& c: s){
-        cout << c << " ";
-    }
-    cout << ("\n");    
-}
-
 void printstruct(const vint& s){
     for(auto& c: s){
         cout << c << " ";
@@ -86,6 +79,13 @@ void printstruct(const vint& s){
     cout << ("\n");    
 }
 
+
+void printstruct(const vector<string>& s){
+    for(auto& c: s){
+        cout << c << " ";
+    }
+    cout << ("\n");    
+}
 
 
 #ifdef LOCAL
@@ -143,16 +143,59 @@ ll min(vll v){
     return m;
 }
 
+vint assign_teams(int n, const std::vector<std::vector<int>>& adj){
+    vint teams(n,-1);
+    int current = 0;
+    rep(i,0,n){
+        if(teams[i] == -1){
+            queue<int> q;
+            current++;
+            current %= 2;
+            q.push(i);
+            teams[i] = current;
+            while(!q.empty()){
+                int node = q.front();
+                q.pop();
+                for(int neighbor: adj[node]){
+                    if(teams[neighbor] == teams[node]){
+                        return {};
+                    }
+                    if(teams[neighbor] == -1){
+                        teams[neighbor] = (teams[node]+1) % 2;
+                        q.push(neighbor);
+                    }
+                }
+            }
+        }
+    }
+    return teams;
+} 
 
 void solve(){
-    ll m,n,k,x,inp = 0;
+    ll m,n,k,x,inp;
     bool b;
     str s;
     in(n);
-    vll v(n);
-    rep(i,0,n){
-        //in(v[i]);
+    in(m);
+    vvint v(n);
+    pintint p;
+    rep(i,0,m){
+        in(p.fi,p.se);
+        v[p.fi-1].push_back(p.se-1);
+        v[p.se-1].push_back(p.fi-1);
     }
+    vint teams = assign_teams(n,v);
+    s = "";        
+    if(sz(teams) == 0){
+        outr("IMPOSSIBLE");
+    }
+    for(int i: teams){
+        s += to_string(i+1);
+        s += " ";
+    }
+    
+    s.pop_back();
+    out(s);
     
     
 
@@ -163,7 +206,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     bool multi = true;
-    //multi = false;
+    multi = false;
     ll t = 1;
     if(multi){
         cin >> t;

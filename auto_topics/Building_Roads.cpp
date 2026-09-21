@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://cses.fi/problemset/task/1666/
 Rating:
 Platform:
 Duration: 
@@ -53,7 +53,6 @@ using str = string;
 #define dbg(x)
 #endif
 
-#define outr(x) out(x); return;
 
 int bw(unsigned long long x) {
     return x == 0 ? 0 : 64 - __builtin_clzll(x);
@@ -79,14 +78,6 @@ void printstruct(const vector<string>& s){
     cout << ("\n");    
 }
 
-void printstruct(const vint& s){
-    for(auto& c: s){
-        cout << c << " ";
-    }
-    cout << ("\n");    
-}
-
-
 
 #ifdef LOCAL
 #define ps(x) printstruct(x) << "\n"
@@ -102,50 +93,11 @@ void in(Args&... args) {
 template<typename... Args>
 void out(const Args&... args) {
     size_t n = 0;
-    ((cout << args), ...);
-}
-
-template<typename... Args>
-void outs(const Args&... args) {
-    size_t n = 0;
     ((cout << args << (++n != sizeof...(args) ? " " : "")), ...);
 }
 
-int max(vint v){
-    int m = numeric_limits<int>::min();
-    for(int i: v){
-        m = max(i,m);
-    }
-    return m;
-}
-
-int min(vint v){
-    int m = numeric_limits<int>::max();
-    for(int i: v){
-        m = min(i,m);
-    }
-    return m;
-}
-
-ll max(vll v){
-    ll m = numeric_limits<ll>::min();
-    for(ll i: v){
-        m = max(i,m);
-    }
-    return m;
-}
-
-ll min(vll v){
-    ll m = numeric_limits<ll>::max();
-    for(ll i: v){
-        m = min(i,m);
-    }
-    return m;
-}
-
-
 void solve(){
-    ll m,n,k,x,inp = 0;
+    ll m,n,k,x,inp;
     bool b;
     str s;
     in(n);

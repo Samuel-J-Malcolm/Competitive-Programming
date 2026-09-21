@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://cses.fi/problemset/task/1666
 Rating:
 Platform:
 Duration: 
@@ -64,15 +64,20 @@ const ll INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
-void printstruct(auto& s){
-    cout << "(";
-    for(auto c: s){
+void printstruct(const vint& s){
+    for(auto& c: s){
         cout << c << " ";
     }
-    cout << ")";
-    cout << "\n";
-    
+    cout << ("\n");    
 }
+
+void printstruct(const vector<string>& s){
+    for(auto& c: s){
+        cout << c << " ";
+    }
+    cout << ("\n");    
+}
+
 
 #ifdef LOCAL
 #define ps(x) printstruct(x) << "\n"
@@ -81,33 +86,95 @@ void printstruct(auto& s){
 #endif
 
 template<typename... Args>
-void input(Args&... args) {
+void in(Args&... args) {
     ((cin >> args), ...);
 }
 
 template<typename... Args>
 void out(const Args&... args) {
-    ((cout << args), ...);
+    size_t n = 0;
+    ((cout << args << (++n != sizeof...(args) ? " " : "")), ...);
+}
+
+vint assign_group_ids(int n, const std::vector<std::vector<int>>& adj){
+    vint ids(n,-1);
+    int current = 0;
+    rep(i,0,n){
+        if(ids[i] == -1){
+            queue<int> q;
+            current++;
+            q.push(i);
+            ids[i] = current;
+            while(!q.empty()){
+                int node = q.front();
+                q.pop();
+                for(int neighbor: adj[node]){
+                    if(ids[neighbor] == -1){
+                        ids[neighbor] = current;
+                        q.push(neighbor);
+                    }
+                }
+            }
+        }
+    }
+    return ids;
+} 
+
+int max(vint v){
+    int m = numeric_limits<int>::min();
+    for(int i: v){
+        m = max(i,m);
+    }
+    return m;
+}
+
+int min(vint v){
+    int m = numeric_limits<int>::max();
+    for(int i: v){
+        m = min(i,m);
+    }
+    return m;
+}
+
+ll max(vll v){
+    ll m = numeric_limits<ll>::min();
+    for(ll i: v){
+        m = max(i,m);
+    }
+    return m;
+}
+
+ll min(vll v){
+    ll m = numeric_limits<ll>::max();
+    for(ll i: v){
+        m = min(i,m);
+    }
+    return m;
 }
 
 void solve(){
-    ll n,k,x,in;
+    ll m,n,k,x,inp;
     bool b;
     str s;
-    char c;
-    char m = 'z'+1;
-    input(s);
-    rep(i,0,sz(s)){
-        c = s[i];
-        if(c <= m){
-            out("Mike\n");
-        }
-        else{
-            out("Ann\n");
-        }
-        m = min(c,m);
+    in(n);
+    in(m);
+    vvint v(n);
+    rep(i,0,m){
+        in(k);
+        in(x);
+        v[k-1].push_back(x-1);
+        v[x-1].push_back(k-1);
+
     }
-    
+    vint groups = assign_group_ids(n,v);
+    vint v1(max(groups));
+    rep(i,0,n){
+        v1[groups[i]-1] = i+1;
+    }
+    out(sz(v1)-1,"\n");
+    rep(i,1,sz(v1)){
+        out(v1[0]," ",v1[i],"\n");
+    }
 
 }
 
@@ -115,7 +182,8 @@ int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-    bool multi = false;
+    bool multi = true;
+    multi = false;
     ll t = 1;
     if(multi){
         cin >> t;
@@ -124,7 +192,6 @@ int main()
     while (t--){
         solve();
         if(multi){
-            out("\n");
         }
     }
     return 0;

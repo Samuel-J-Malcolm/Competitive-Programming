@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://cses.fi/problemset/task/1192
 Rating:
 Platform:
 Duration: 
@@ -53,7 +53,6 @@ using str = string;
 #define dbg(x)
 #endif
 
-#define outr(x) out(x); return;
 
 int bw(unsigned long long x) {
     return x == 0 ? 0 : 64 - __builtin_clzll(x);
@@ -79,14 +78,6 @@ void printstruct(const vector<string>& s){
     cout << ("\n");    
 }
 
-void printstruct(const vint& s){
-    for(auto& c: s){
-        cout << c << " ";
-    }
-    cout << ("\n");    
-}
-
-
 
 #ifdef LOCAL
 #define ps(x) printstruct(x) << "\n"
@@ -102,58 +93,74 @@ void in(Args&... args) {
 template<typename... Args>
 void out(const Args&... args) {
     size_t n = 0;
-    ((cout << args), ...);
-}
-
-template<typename... Args>
-void outs(const Args&... args) {
-    size_t n = 0;
     ((cout << args << (++n != sizeof...(args) ? " " : "")), ...);
 }
 
-int max(vint v){
-    int m = numeric_limits<int>::min();
-    for(int i: v){
-        m = max(i,m);
+vint assign_group_ids(int n, const std::vector<std::vector<int>>& adj){
+    vint ids(n,-1);
+    int current = 0;
+    rep(i,0,n){
+        if(ids[i] == -1){
+            queue<int> q;
+            current++;
+            q.push(i);
+            ids[i] = current;
+            while(!q.empty()){
+                int node = q.front();
+                q.pop();
+                for(int neighbor: adj[node]){
+                    if(ids[neighbor] == -1){
+                        ids[neighbor] = current;
+                        q.push(neighbor);
+                    }
+                }
+            }
+        }
     }
-    return m;
-}
-
-int min(vint v){
-    int m = numeric_limits<int>::max();
-    for(int i: v){
-        m = min(i,m);
-    }
-    return m;
-}
-
-ll max(vll v){
-    ll m = numeric_limits<ll>::min();
-    for(ll i: v){
-        m = max(i,m);
-    }
-    return m;
-}
-
-ll min(vll v){
-    ll m = numeric_limits<ll>::max();
-    for(ll i: v){
-        m = min(i,m);
-    }
-    return m;
-}
-
+    return ids;
+} 
 
 void solve(){
-    ll m,n,k,x,inp = 0;
+    ll m,n,k,x,inp;
     bool b;
     str s;
     in(n);
-    vll v(n);
+    in(m);
+    vector<string> vs(n,"");
+    vvint adj(n*m);
     rep(i,0,n){
-        //in(v[i]);
+        cin >> vs[i];
     }
-    
+    char c;
+    int num;
+    int totsub = 0;
+    rep(i,0,n){
+        rep(j,0,m){
+            c = vs[i][j];
+            if(c == '#'){
+                totsub++;
+                continue;    
+            }
+            num = i*m+j;
+            if(i != 0 && vs[i-1][j] != '#'){
+                adj[num].push_back(num-m);
+            }
+            if(j != 0 && vs[i][j-1] != '#'){
+                adj[num].push_back(num-1);
+            }
+            if(i != n-1 && vs[i+1][j] != '#'){
+                adj[num].push_back(num+m);
+            }
+            if(j != m-1 && vs[i][j+1] != '#'){
+                adj[num].push_back(num+1);
+            }
+        }
+    }
+    int x1 = 0;
+    for(int i: assign_group_ids(n*m,adj)){
+        x1 = max(x1,i);
+    }
+    out(x1-totsub);
     
 
 }
@@ -163,7 +170,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     bool multi = true;
-    //multi = false;
+    multi = false;
     ll t = 1;
     if(multi){
         cin >> t;

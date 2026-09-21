@@ -53,7 +53,6 @@ using str = string;
 #define dbg(x)
 #endif
 
-#define outr(x) out(x); return;
 
 int bw(unsigned long long x) {
     return x == 0 ? 0 : 64 - __builtin_clzll(x);
@@ -65,28 +64,15 @@ const ll INF32 = 1e9;
 const ld  EPS = 1e-9;
 const ll  MOD = 1e9 + 7;
 
-void printstruct(const vll& s){
-    for(auto& c: s){
+void printstruct(auto& s){
+    cout << "(";
+    for(auto c: s){
         cout << c << " ";
     }
-    cout << ("\n");    
+    cout << ")";
+    cout << "\n";
+    
 }
-
-void printstruct(const vector<string>& s){
-    for(auto& c: s){
-        cout << c << " ";
-    }
-    cout << ("\n");    
-}
-
-void printstruct(const vint& s){
-    for(auto& c: s){
-        cout << c << " ";
-    }
-    cout << ("\n");    
-}
-
-
 
 #ifdef LOCAL
 #define ps(x) printstruct(x) << "\n"
@@ -95,65 +81,24 @@ void printstruct(const vint& s){
 #endif
 
 template<typename... Args>
-void in(Args&... args) {
+void input(Args&... args) {
     ((cin >> args), ...);
 }
 
 template<typename... Args>
 void out(const Args&... args) {
-    size_t n = 0;
     ((cout << args), ...);
 }
 
-template<typename... Args>
-void outs(const Args&... args) {
-    size_t n = 0;
-    ((cout << args << (++n != sizeof...(args) ? " " : "")), ...);
-}
-
-int max(vint v){
-    int m = numeric_limits<int>::min();
-    for(int i: v){
-        m = max(i,m);
-    }
-    return m;
-}
-
-int min(vint v){
-    int m = numeric_limits<int>::max();
-    for(int i: v){
-        m = min(i,m);
-    }
-    return m;
-}
-
-ll max(vll v){
-    ll m = numeric_limits<ll>::min();
-    for(ll i: v){
-        m = max(i,m);
-    }
-    return m;
-}
-
-ll min(vll v){
-    ll m = numeric_limits<ll>::max();
-    for(ll i: v){
-        m = min(i,m);
-    }
-    return m;
-}
-
-
 void solve(){
-    ll m,n,k,x,inp = 0;
+    ll m,n,k,x,in;
     bool b;
     str s;
-    in(n);
+    input(n);
     vll v(n);
     rep(i,0,n){
-        //in(v[i]);
+        //input(v[i]);
     }
-    
     
 
 }

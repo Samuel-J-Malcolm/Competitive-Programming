@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://open.kattis.com/problems/quantumsuperposition
 Rating:
 Platform:
 Duration: 
@@ -143,15 +143,73 @@ ll min(vll v){
     return m;
 }
 
+vector<int> pathsizes(int n,vvint v,int s,int e){
+    vector<int> pathsizes;
+    vector<unordered_set<int>> done(n); 
+    queue<pintint> q;
+    q.push({s,0});
+    if(s == e){
+        return {0};
+    }
+    while(!q.empty()){
+        auto node = q.front();
+        q.pop();
+        for(auto& adj: v[node.fi]){
+            if(adj == e){
+                pathsizes.push_back(node.se+1);
+            }
+            else if(!done[adj].count(node.se+1)){
+                q.push({adj,node.se+1});
+                done[adj].insert(node.se+1);
+            }
+        }
+    }
+    return pathsizes;
+}
 
 void solve(){
-    ll m,n,k,x,inp = 0;
+    ll e1,e2,v1,v2 = 0;
+    int i1,i2;
     bool b;
     str s;
-    in(n);
-    vll v(n);
-    rep(i,0,n){
-        //in(v[i]);
+    in(v1);
+    in(v2);
+    in(e1);
+    in(e2);
+    vvint u1(v1-1);
+    vvint u2(v2-1);
+    rep(i,0,e1){
+        in(i1);
+        in(i2);
+        u1[i1-1].push_back(i2-1);
+    }
+    
+    rep(i,0,e2){
+        in(i1);
+        in(i2);
+        u2[i1-1].push_back(i2-1);
+    }
+    auto s1 = pathsizes(v1,u1,0,v1-1);
+    auto s2 = pathsizes(v2,u2,0,v2-1);
+    vector<bool> valid(2001);
+    for(int i: s1){
+        for(int j: s2){
+            if(i+j <= 2000){
+                valid[i+j] = true;
+            }
+        }
+    }
+    int q;
+    in(q);
+    rep(i,0,q){
+        in(i1);
+        if(valid[i1]){
+            out("Yes\n");
+        }
+        else{
+            out("No\n");
+        }
+        
     }
     
     
@@ -163,7 +221,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     bool multi = true;
-    //multi = false;
+    multi = false;
     ll t = 1;
     if(multi){
         cin >> t;

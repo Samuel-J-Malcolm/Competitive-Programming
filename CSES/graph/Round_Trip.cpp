@@ -1,5 +1,5 @@
 /*
-Link: $url$
+Link: https://cses.fi/problemset/task/1669/
 Rating:
 Platform:
 Duration: 
@@ -81,11 +81,18 @@ void printstruct(const vector<string>& s){
 
 void printstruct(const vint& s){
     for(auto& c: s){
+        cout << c+1 << " ";
+    }
+    cout << (s[0]+1);
+    cout << ("\n");    
+}
+
+void printstruct(const set<int>& s){
+    for(auto& c: s){
         cout << c << " ";
     }
     cout << ("\n");    
 }
-
 
 
 #ifdef LOCAL
@@ -143,19 +150,76 @@ ll min(vll v){
     return m;
 }
 
+vector<int> cycle4(ll n, vvint v) {
+vector<int> parent(n, -1);
+vector<int> idx(n, 0);
 
+rep(start, 0, n) {
+        if (parent[start] != -1)
+            continue;
+
+        parent[start] = start;
+
+        stack<int> s;
+        s.push(start);
+
+        while (!s.empty()) {
+            int node = s.top();
+
+            // We've examined every neighbor of node.
+            if (idx[node] == v[node].size()) {
+                s.pop();
+                continue;
+            }
+
+            int neighbor = v[node][idx[node]];
+            idx[node]++;
+
+            if (neighbor == parent[node])
+                continue;
+
+            if (parent[neighbor] == -1) {
+                parent[neighbor] = node;
+                s.push(neighbor);
+            }
+            else {
+                vector<int> cycle;
+
+                cycle.push_back(neighbor);
+
+                int cur = node;
+                while (cur != neighbor) {
+                    cycle.push_back(cur);
+                    cur = parent[cur];
+                }
+                return cycle;
+            }
+        }
+    }
+
+    return {};
+}
 void solve(){
-    ll m,n,k,x,inp = 0;
+    ll m,n,k,x,inp;
     bool b;
     str s;
     in(n);
-    vll v(n);
-    rep(i,0,n){
-        //in(v[i]);
-    }
-    
-    
+    in(m);
+    vvint v(n);
+    pintint p;
+    rep(i,0,m){
+        in(p.fi,p.se);
+        v[p.fi-1].push_back(p.se-1);
+        v[p.se-1].push_back(p.fi-1);
 
+    }
+    auto teams = cycle4(n,v);
+    if(sz(teams) == 0){
+        outr("IMPOSSIBLE");
+    }
+    out(sz(teams)+1,"\n");
+    printstruct(teams);
+    
 }
 
 int main()
@@ -163,7 +227,7 @@ int main()
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
     bool multi = true;
-    //multi = false;
+    multi = false;
     ll t = 1;
     if(multi){
         cin >> t;
