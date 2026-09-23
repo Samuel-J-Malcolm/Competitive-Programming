@@ -1,6 +1,6 @@
 # Per-file movement plan
 
-This is the proposed movement map for every C++ file under `Kattis`, `CSES`, and `topics`. Each file was inspected individually and classified by the implementation's dominant technique. This document proposes destinations only; it does not move or delete source files.
+This is the executed movement map for every C++ file under the former `Kattis`, `CSES`, and `topics` roots. Each file was inspected individually and classified by the implementation's dominant technique. The moves preserve source content and metadata while separating canonical solutions, review items, and duplicate archives.
 
 ## Destination policy
 
@@ -14,13 +14,13 @@ This is the proposed movement map for every C++ file under `Kattis`, `CSES`, and
 
 | Current file | Proposed destination | Action |
 |---|---|---|
-| `CSES/graph/BuildingTeams.cpp` | `problems/graph/bipartite/BuildingTeams.cpp` | Compare with underscore variant |
-| `CSES/graph/Building_Teams.cpp` | `problems/archives/legacy_duplicates/cses_graph/Building_Teams.cpp` | Archive only if duplicate comparison confirms it |
+| `CSES/graph/BuildingTeams.cpp` | `problems/archives/legacy_duplicates/cses_graph/BuildingTeams.cpp` | Archive after retaining linked underscore variant |
+| `CSES/graph/Building_Teams.cpp` | `problems/graph/bipartite/Building_Teams.cpp` | Retain linked implementation |
 | `CSES/graph/Building_Roads.cpp` | `problems/graph/connectivity/Building_Roads.cpp` | Canonical graph placement |
-| `CSES/graph/MessageRoute.cpp` | `problems/graph/shortest_path/MessageRoute.cpp` | Compare with underscore variant |
-| `CSES/graph/Message_Route.cpp` | `problems/archives/legacy_duplicates/cses_graph/Message_Route.cpp` | Archive only if duplicate comparison confirms it |
-| `CSES/graph/RoundTrip.cpp` | `problems/graph/cycles/RoundTrip.cpp` | Compare with underscore variant |
-| `CSES/graph/Round_Trip.cpp` | `problems/archives/legacy_duplicates/cses_graph/Round_Trip.cpp` | Archive only if duplicate comparison confirms it |
+| `CSES/graph/MessageRoute.cpp` | `problems/archives/legacy_duplicates/cses_graph/MessageRoute.cpp` | Archive after retaining linked underscore variant |
+| `CSES/graph/Message_Route.cpp` | `problems/graph/shortest_path/Message_Route.cpp` | Retain linked implementation |
+| `CSES/graph/RoundTrip.cpp` | `problems/archives/legacy_duplicates/cses_graph/RoundTrip.cpp` | Archive after retaining linked underscore variant |
+| `CSES/graph/Round_Trip.cpp` | `problems/graph/cycles/Round_Trip.cpp` | Retain linked implementation |
 | `CSES/graph/Monsters.cpp` | `problems/review/graph/grid_bfs/Monsters.cpp` | Review unusual monster-distance logic before canonical move |
 
 `Kattis/` currently contains no C++ files and requires no movement in this batch.
@@ -105,7 +105,7 @@ This is the proposed movement map for every C++ file under `Kattis`, `CSES`, and
 | Current file | Proposed destination | Action |
 |---|---|---|
 | `topics/greedy/constructive/1844D.cpp` | `problems/constructive/periodic_strings/1844D.cpp` | Move by construction |
-| `topics/greedy/constructive/1881C.cpp` | `problems/greedy/matrix_rotation/1881C.cpp` | Compare with strings copy |
+| `topics/greedy/constructive/1881C.cpp` | `problems/greedy/matrix_rotation/1881C.cpp` | Retain canonical copy |
 | `topics/greedy/constructive/1980C.cpp` | `problems/greedy/array_replacement/1980C.cpp` | Move by greedy replacement |
 | `topics/greedy/constructive/2200D.cpp` | `problems/constructive/array_transformation/2200D.cpp` | Move by construction |
 | `topics/greedy/constructive/2202B.cpp` | `problems/greedy/string_balance/2202B.cpp` | Move by string balance logic |
@@ -131,7 +131,7 @@ This is the proposed movement map for every C++ file under `Kattis`, `CSES`, and
 | `topics/greedy/misc/2254E.cpp` | `problems/greedy/ordered_selection/2254E.cpp` | Move by ordered selection |
 | `topics/greedy/brute_force/25A.cpp` | `problems/implementation/parity/25A.cpp` | Move by parity scan |
 | `topics/greedy/brute_force/875A.cpp` | `problems/brute_force/digit_sum/875A.cpp` | Move by digit-sum search |
-| `topics/greedy/brute_force/1692F.cpp` | `problems/archives/legacy_duplicates/1692F.cpp` | Compare with strings copy |
+| `topics/greedy/brute_force/1692F.cpp` | `problems/brute_force/modular_frequency/1692F.cpp` | Retain canonical copy |
 | `topics/greedy/brute_force/1919C.cpp` | `problems/greedy/two_state_sequence/1919C.cpp` | Move by two-state greedy |
 | `topics/greedy/brute_force/2117E.cpp` | `problems/arrays/nearest_conflict/2117E.cpp` | Move by nearest-conflict scan |
 | `topics/greedy/brute_force/2224A.cpp` | `problems/brute_force/array_reduction/2224A.cpp` | Move by operation search |
@@ -180,7 +180,7 @@ This is the proposed movement map for every C++ file under `Kattis`, `CSES`, and
 |---|---|---|
 | `topics/strings/2125A.cpp` | `problems/strings/reordering/2125A.cpp` | Move by character reordering |
 | `topics/strings/2200C.cpp` | `problems/strings/reduction/2200C.cpp` | Move by string reduction |
-| `topics/strings/1881C.cpp` | `problems/archives/legacy_duplicates/1881C.cpp` | Compare with greedy/constructive copy |
+| `topics/strings/1881C.cpp` | `problems/archives/legacy_duplicates/1881C/strings.cpp` | Archive identical copy |
 | `topics/strings/brackets/2233C.cpp` | `problems/strings/brackets/2233C.cpp` | Move by bracket parsing |
 | `topics/strings/abc468b.cpp` | `problems/review/strings/coverage/abc468b.cpp` | Definite compile issue: `ll(n);` |
 | `topics/strings/Binary_Split.cpp` | `problems/strings/binary_split/Binary_Split.cpp` | Move by split logic |
@@ -190,18 +190,18 @@ This is the proposed movement map for every C++ file under `Kattis`, `CSES`, and
 | `topics/strings/1272C.cpp` | `problems/strings/substrings/1272C.cpp` | Move by substring counting |
 | `topics/strings/2242A.cpp` | `problems/strings/counting/2242A.cpp` | Move by character counting |
 | `topics/strings/A.cpp` | `problems/strings/distinct_prefixes/A.cpp` | Move by prefix logic |
-| `topics/strings/1692F.cpp` | `problems/archives/legacy_duplicates/1692F.cpp` | Compare with greedy/brute_force copy |
+| `topics/strings/1692F.cpp` | `problems/archives/legacy_duplicates/1692F/strings.cpp` | Archive identical copy |
 | `topics/strings/1917B.cpp` | `problems/strings/binary_split/1917B.cpp` | Move by split logic |
 | `topics/strings/abc468d.cpp` | `problems/strings/palindromic_substrings/abc468d.cpp` | Move by palindrome logic |
 | `topics/strings/1794A.cpp` | `problems/strings/reconstruction/1794A.cpp` | Move by reconstruction |
 | `topics/strings/b.CPP` | `problems/math/perfect_square/b.CPP` | Normalize extension in later rename pass |
 | `topics/strings/1913B.cpp` | `problems/strings/binary_split/1913B.cpp` | Move by split logic |
-| `topics/strings/1692H.cpp` | `problems/archives/legacy_duplicates/1692H.cpp` | Compare with misc copy |
-| `topics/strings/1790E.cpp` | `problems/archives/legacy_duplicates/1790E.cpp` | Compare with bit-manipulation copy |
+| `topics/strings/1692H.cpp` | `problems/strings/frequency_subarray/1692H.cpp` | Retain canonical copy |
+| `topics/strings/1790E.cpp` | `problems/archives/legacy_duplicates/1790E/strings.cpp` | Archive identical copy |
 | `topics/strings/abc469b.cpp` | `problems/strings/run_counting/abc469b.cpp` | Move by run counting |
 | `topics/strings/C.cpp` | `problems/strings/binary_split/C.cpp` | Move by split logic |
 | `topics/strings/2252B.cpp` | `problems/strings/binary_balance/2252B.cpp` | Move by binary balance |
-| `topics/strings/1692G.cpp` | `problems/archives/legacy_duplicates/1692G.cpp` | Compare with single_sweep copy |
+| `topics/strings/1692G.cpp` | `problems/archives/legacy_duplicates/1692G/strings.cpp` | Archive identical copy |
 | `topics/strings/D.cpp` | `problems/review/math/geometry/D.cpp` | Review quadratic-form context before move |
 
 ## topics/misc
@@ -209,7 +209,7 @@ This is the proposed movement map for every C++ file under `Kattis`, `CSES`, and
 | Current file | Proposed destination | Action |
 |---|---|---|
 | `topics/misc/1028G.cpp` | `problems/greedy/top_two_tracking/1028G.cpp` | Move by top-two tracking |
-| `topics/misc/1692H.cpp` | `problems/archives/legacy_duplicates/1692H.cpp` | Compare with strings copy |
+| `topics/misc/1692H.cpp` | `problems/archives/legacy_duplicates/1692H/misc.cpp` | Archive identical copy |
 | `topics/misc/2252E.cpp` | `problems/review/incomplete/2252E.cpp` | Empty solver |
 | `topics/misc/2253C.cpp` | `problems/review/incomplete/2253C.cpp` | Empty solver |
 
@@ -224,7 +224,7 @@ This is the proposed movement map for every C++ file under `Kattis`, `CSES`, and
 
 | Current file | Proposed destination |
 |---|---|
-| `topics/single_sweep/1692G.cpp` | `problems/archives/legacy_duplicates/1692G.cpp` | Compare with strings copy |
+| `topics/single_sweep/1692G.cpp` | `problems/arrays/adjacent_growth/1692G.cpp` | Retain canonical copy |
 | `topics/single_sweep/2051E.cpp` | `problems/greedy/sweep_line/2051E.cpp` |
 | `topics/single_sweep/2237A.cpp` | `problems/greedy/prefix_minimum/2237A.cpp` |
 | `topics/single_sweep/2240C.cpp` | `problems/bit_manipulation/xor/2240C.cpp` |
@@ -233,15 +233,15 @@ This is the proposed movement map for every C++ file under `Kattis`, `CSES`, and
 | `topics/single_sweep/2242C.cpp` | `problems/greedy/run_lengths/2242C.cpp` |
 | `topics/single_sweep/abc469c.cpp` | `problems/greedy/simulation/abc469c.cpp` |
 
-## Execution order
+## Execution status
 
-1. Freeze the current source tree and add a manifest of the 152 source paths.
-2. Compare the CSES underscore/non-underscore pairs and compile each variant.
-3. Compare the duplicate Codeforces-number families (`1692F`, `1692G`, `1692H`, `1790E`, and `1881C`).
-4. Move only confirmed canonical files, preserving their original names and metadata.
-5. Move incomplete or unsafe files into `problems/review/` without presenting them as solved references.
-6. Run a compile pass over every retained canonical C++ source.
-7. Normalize names and extensions in a separate follow-up change.
+1. Completed: freeze the source tree and inventory all 152 source paths.
+2. Completed: compare the CSES underscore/non-underscore pairs.
+3. Completed: compare the duplicate Codeforces-number families (`1692F`, `1692G`, `1692H`, `1790E`, and `1881C`).
+4. Completed: move canonical files while preserving their original names and metadata.
+5. Completed: move incomplete or unsafe files into `problems/review/` and duplicate copies into `problems/archives/legacy_duplicates/`.
+6. In progress: compile every migrated C++ source and record pre-existing source failures separately from move errors.
+7. Pending: normalize names and extensions in a separate follow-up change.
 
 ## Review blockers before movement
 
