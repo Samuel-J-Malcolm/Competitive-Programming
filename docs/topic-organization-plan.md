@@ -28,6 +28,32 @@ The following examples illustrate how the current repository should be reclassif
 
 This classification makes the same point as the repo-wide audit: source origin (`Kattis`, `CSES`, `topics`) is not a reliable organization key, while the actual algorithmic technique is.
 
+The current file counts and the first proposed migration batch are recorded in
+[docs/topic-inventory.md](topic-inventory.md). That inventory deliberately
+separates evidence gathering from file moves so duplicate solutions can be
+compared and compiled before anything is archived.
+
+## Concrete migration map for the current repo
+
+The repo can be moved in a controlled sequence without losing any problem solutions:
+
+- `CSES/graph/` should remain under a graph-focused bucket, but the folder name should be normalized to a topic-first structure such as `topics/graph/` or `problems/graph/` rather than being defined by source.
+- `topics/graphs/` should be treated as the canonical graph folder for all graph problems, regardless of whether the original source was Kattis, CSES, or a custom contest.
+- `topics/strings/` should become a canonical string-processing bucket and absorb related tasks currently spread across `basic`, `misc`, and miscellaneous contest-only files.
+- `topics/sorting/` is already close to a concept bucket and should be retained as a sorting-focused directory, with names normalized to consistent `problem_name.cpp` format.
+- `topics/basic/` should be split into meaningful subcategories such as implementation, easy cases, and simple brute force, rather than left as a catch-all bucket.
+- `topics/misc/` should be reviewed carefully and either split into valid topic buckets or archived if the file is only a one-off contest dump.
+- `topics/single_sweep/` should be reorganized into a proper algorithmic grouping (for example, prefix/suffix or monotonic sweep technique) rather than a generic folder name.
+- `topics/algorithms/` and `topics/greedy/` should be preserved as conceptual collections, but each file should be checked against the technique actually used by the code and not just by the filename.
+
+## Execution checklist
+
+1. Sort every file by the real algorithm it uses, not by the platform it came from.
+2. Move duplicates into `archives/legacy_duplicates/` and keep the best implementation.
+3. Rename files to a single consistent pattern, ideally `problem_name.cpp`.
+4. Keep metadata headers (`Link`, `Platform`, `Topic`) intact when moving files.
+5. Recompile the sources after the move to confirm the folder migration did not break any solution.
+
 ## Problems in the current structure
 
 1. Mixed source and topic organization
