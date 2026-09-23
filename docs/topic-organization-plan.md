@@ -33,6 +33,11 @@ The current file counts and the first proposed migration batch are recorded in
 separates evidence gathering from file moves so duplicate solutions can be
 compared and compiled before anything is archived.
 
+The complete per-file destination map is recorded in
+[docs/file-movement-plan.md](file-movement-plan.md). It covers all 152 current
+C++ sources and marks duplicate, incomplete, and review-needed files so they
+are not moved into the canonical tree without a separate decision.
+
 ## Concrete migration map for the current repo
 
 The repo can be moved in a controlled sequence without losing any problem solutions:
